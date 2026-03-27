@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Rocket, Wind, Users, GraduationCap } from 'lucide-react';
+import { Rocket, Wind, Users, GraduationCap, Trophy, Wrench } from 'lucide-react';
 
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/button';
@@ -61,8 +61,8 @@ function FactPill({ label, value }: FactPillProps) {
 }
 
 const introParagraphs = [
-  'I am a high school student at Oconee County High School (class of 2027) with a focused interest in aerospace and mechanical engineering. Rather than only studying theory, I spend most of my time designing, simulating, and building systems that actually fly: high-power research rockets, competition vehicles, and experimental airfoils.',
-  'My work spans national rocketry competitions, NASA’s Student Launch Initiative, undergraduate-level research at the University of Georgia, and leadership in the Civil Air Patrol. Across these projects, I have learned how to move from an idea to a fully documented, tested system — balancing analytical modeling, CAD and simulation, documentation, and team leadership.',
+  'I am a high school student at Oconee County High School, class of 2027, with a focused interest in aerospace and mechanical engineering. Rather than only studying theory, I spend most of my time designing, simulating, and building systems that actually fly: high-power research rockets, competition vehicles, and experimental airfoils.',
+  'My work spans national rocketry competitions, NASA’s Student Launch Initiative, undergraduate-level research at the University of Georgia, leadership in Civil Air Patrol, and hands-on design work for my school community. Across these projects, I have learned how to move from an idea to a fully documented, tested system while balancing analytical modeling, CAD and simulation, documentation, communication, and team leadership.',
 ];
 
 const quickFacts = [
@@ -82,6 +82,14 @@ const quickFacts = [
     label: 'Leadership',
     value: 'Civil Air Patrol Cadet Commander',
   },
+  {
+    label: 'Activities',
+    value: 'Varsity Tennis · Student Council',
+  },
+  {
+    label: 'Service',
+    value: 'STEM Outreach · School Design Work',
+  },
 ];
 
 const highlightRails = [
@@ -98,45 +106,67 @@ const highlightRails = [
   {
     icon: Users,
     label: 'Leadership',
-    text: 'Cadet Commander, outreach lessons, and technical documentation.',
+    text: 'Cadet Commander, student leadership, outreach lessons, and mentorship.',
   },
   {
     icon: GraduationCap,
     label: 'Academics',
-    text: 'Governor’s Honors Program in Mechanical & Aerospace Engineering.',
+    text: 'Advanced coursework, research experience, and technical writing.',
+  },
+  {
+    icon: Wrench,
+    label: 'Design Build',
+    text: 'Practical CAD and 3D printing projects for teams, classrooms, and school programs.',
+  },
+  {
+    icon: Trophy,
+    label: 'Athletics',
+    text: 'Varsity tennis experience that has strengthened discipline and composure.',
   },
 ];
 
 const projects = [
   {
-    title: 'NASA Student Launch Initiative — Project RANCH',
+    title: 'NASA Student Launch Initiative - Project RANCH',
     body:
-      'As Payload Lead for my university’s NASA Student Launch team, I co-engineered an 8-foot high-power rocket to reach a ~4,300 ft. apogee. My work focused on payload architecture and airframe design, and I was a key contributor to the 400+ pages of technical documentation our team submitted for NASA review.',
-    meta: ['Payload Lead', '8-foot rocket to 4,300 ft', 'NASA-reviewed documentation'],
+      'As Payload Team Lead and a key technical contributor on our NASA Student Launch team, I helped engineer a full-scale high-power rocket and payload system under strict NASA requirements. My work included payload architecture, design coordination, testing, and major contributions to the hundreds of pages of technical documentation our team submitted for review.',
+    meta: ['Payload Team Lead', 'Full-scale rocket project', 'NASA-reviewed documentation'],
   },
   {
-    title: 'American Rocketry Challenge (ARC)',
+    title: 'American Rocketry Challenge',
     body:
-      'As Co-Captain, I led the design, simulation (OpenRocket), and fabrication (Fusion 360) of our competition rocket. We engineered the vehicle to meet strict altitude and flight-time constraints, earning a 24th-place national finish out of ~1,000 teams and becoming the only team from Georgia to qualify for nationals.',
-    meta: ['Co-Captain', '24th of ~1,000 teams', 'Only GA team at nationals'],
+      'As Co-Captain, I led the design, simulation in OpenRocket, and fabrication in Fusion 360 of our competition rocket. We engineered the vehicle to meet strict altitude and flight-time constraints, earning a top national finish and becoming the only team from Georgia to qualify for nationals that year.',
+    meta: ['Co-Captain', 'National finalist', 'OpenRocket & Fusion 360'],
   },
   {
-    title: 'UGA Bio-Inspired & AI-Designed Airfoil Research',
+    title: 'UGA Bio-Inspired and AI-Designed Airfoil Research',
     body:
-      'In a full-time research internship at the University of Georgia, I investigated the aerodynamic performance of bio-inspired and AI-generated airfoils. I used CFD, CAD, and 3D printing to model and test custom profiles in a wind tunnel, and my findings resulted in a gold-medal-winning science fair project.',
-    meta: ['UGA research internship', '7 weeks full-time', 'Gold medal science fair project'],
+      'In a full-time research internship at the University of Georgia, I investigated the aerodynamic performance of bio-inspired and AI-generated airfoils. I used CFD, CAD, Python, and 3D printing to model and test custom profiles in a wind tunnel, and the project later became a gold-medal-winning science fair entry.',
+    meta: ['UGA research internship', 'Wind tunnel testing', 'Science fair gold medal'],
   },
   {
-    title: 'Governor’s Honors Program (GHP) — Mechanical & Aerospace Engineering',
+    title: 'Civil Air Patrol - Cadet Commander',
     body:
-      'Selected for the prestigious Governor’s Honors Program, I attended a four-week residential program focused on advanced, university-level engineering topics. I studied calculus-based physics and numerical methods in Python and contributed to a capstone project on an electrohydrodynamic “ionic wind” aircraft concept.',
-    meta: ['4-week residential program', 'Advanced physics & Python', 'Ionic wind aircraft project'],
+      'As Cadet Commander of my Civil Air Patrol squadron, I lead a roughly 30-cadet corps in weekly training focused on aerospace, leadership, physical fitness, and character. My responsibilities include planning training, mentoring cadets, organizing events, and helping build a stronger and more disciplined squadron culture.',
+    meta: ['Cadet Commander', '~30 cadets', 'Training & mentorship'],
   },
   {
-    title: 'Civil Air Patrol — Cadet Commander',
+    title: 'Student Council - Secretary',
     body:
-      'As Cadet Commander of my Civil Air Patrol squadron, I lead a ~30-cadet corps in weekly training focused on aerospace, leadership, and character. My duties include planning the training curriculum, organizing STEM and leadership events, and directly mentoring cadets—a role that builds on years of prior leadership service.',
-    meta: ['Cadet Commander', '~30-cadet corps', 'Weekly training & mentorship'],
+      'Through Student Council, I contribute to school-wide planning and student leadership efforts while helping represent student ideas in a more formal setting. The role has strengthened my communication, organization, and follow-through, especially when working with both peers and faculty on initiatives that need steady execution.',
+    meta: ['School leadership', 'Organization', 'Communication'],
+  },
+  {
+    title: 'Applied Design for School Programs',
+    body:
+      'I also enjoy using engineering for practical school impact. One example is a modular connector system my team and I designed for elevated stage platforms used by our theatre program. It was a great example of solving a real problem with CAD, iteration, and fabrication while designing for an actual user group.',
+    meta: ['Real client need', 'CAD & fabrication', 'Theatre program project'],
+  },
+  {
+    title: 'STEM Outreach and Teaching',
+    body:
+      'A meaningful part of my work is teaching engineering concepts to younger students through outreach events, demonstrations, and hands-on activities. I enjoy making technical ideas more approachable and helping students see engineering as something creative, practical, and exciting.',
+    meta: ['Hands-on outreach', 'Mentorship', 'STEM communication'],
   },
 ];
 
@@ -145,43 +175,44 @@ const skillGroups = [
     title: 'Aerospace & simulation',
     items: [
       'OpenRocket for flight dynamics, stability, and performance trade studies',
-      'XFOIL and other CFD tools for airfoil analysis and lift/drag prediction',
+      'XFOIL and other CFD tools for airfoil analysis and lift and drag prediction',
       'Basic exposure to thermodynamics and combustion modeling using Cantera',
-      'Altimeter and flight-data analysis (e.g., AltimeterTwo and high-power altimeters)',
+      'Altimeter and flight-data analysis for high-power and competition rockets',
     ],
   },
   {
     title: 'Design, CAD, and fabrication',
     items: [
-      'Fusion 360 (CAD) for airframes, payload bays, and 3D-printable components',
-      '3D printing of structural and aerodynamic parts (including nylon–carbon-fiber composites)',
-      'Basic finite element analysis, iterative design, and design-for-manufacturing',
-      'Practical build experience: composites, recovery systems, payload integration, and test rigs',
+      'Fusion 360 for airframes, payload bays, fixtures, and 3D-printable components',
+      '3D printing of structural and aerodynamic parts, including reinforced materials',
+      'Iterative prototyping, design-for-manufacturing, and basic finite element analysis',
+      'Practical build experience with composites, recovery systems, payload integration, and test setups',
     ],
   },
   {
     title: 'Programming & computation',
     items: [
-      'Proficient in Python (data analysis, simulation scripts, FFT signal processing)',
-      'Proficient in JavaScript and comfortable in modern web stacks (used for this portfolio)',
-      'Proficiency with LaTeX for technical documentation and reports',
-      'Working with tooling such as Git/GitHub and modern developer workflows',
+      'Proficient in Python for data analysis, simulation scripts, and signal processing',
+      'Proficient in JavaScript and comfortable in modern web stacks, including this portfolio',
+      'Strong working knowledge of LaTeX for technical documentation and reports',
+      'Experience with Git, GitHub, and modern development workflows',
     ],
   },
   {
     title: 'Leadership, communication, and teaching',
     items: [
       'Planning and leading multi-hour meetings and training for Civil Air Patrol cadets',
-      'Designing and teaching STEM outreach lessons for elementary and middle school students',
-      'Writing large-scale technical documentation (hundreds of pages) for NASA SLI',
-      'Coordinating teams through design reviews, test campaigns, and competition deadlines',
+      'Designing and teaching STEM outreach lessons for younger students',
+      'Writing large-scale technical documentation for NASA Student Launch',
+      'Coordinating teams through design reviews, test campaigns, deadlines, and public-facing presentations',
     ],
   },
 ];
 
 const beyondEngineering = [
-  'Outside of my engineering work, I am active in varsity tennis.',
-  'I play on the varsity tennis team, where I have served in key positions such as 3 singles and 2 doubles. In both activities, I mentor younger students, lead by example, and learn how to stay composed under pressure — skills that translate directly into engineering projects and leadership roles.',
+  'Outside of engineering, I am active in varsity tennis and student leadership at school. These activities give me a different kind of challenge and help me stay balanced while still developing the same discipline, consistency, and accountability that engineering demands.',
+  'On the court, I have competed in important varsity positions and learned how to stay composed under pressure, adapt quickly, and perform with focus. Through Student Council and outreach work, I have also grown as a communicator and organizer, especially in settings where leadership is less about technical skill and more about people, trust, and follow-through.',
+  'I also value projects that let engineering directly serve my community. Whether that means helping with school programs, mentoring younger students, or designing something useful for a real group of people, I want my work to be both technically strong and genuinely helpful.',
 ];
 
 export default function AboutPage() {
@@ -259,7 +290,7 @@ export default function AboutPage() {
         <motion.div {...sectionMotionProps}>
           <Section id="work" title="What I’m working on" kicker="Focus Projects">
             <p className="text-sm md:text-base text-primary-foreground/80">
-              A few of the projects that define my current trajectory as an engineer:
+              A few of the projects and activities that define my current trajectory:
             </p>
             <motion.div
               variants={containerVariants}
@@ -298,7 +329,7 @@ export default function AboutPage() {
         <motion.div {...sectionMotionProps}>
           <Section id="skills" title="Skills & tools" kicker="Toolbox">
             <p className="text-sm md:text-base text-primary-foreground/80">
-              Through these projects, I’ve built a set of technical and leadership skills that I continue to deepen.
+              Through these projects and activities, I’ve built a set of technical and leadership skills that I continue to deepen.
             </p>
             <motion.div
               variants={containerVariants}
@@ -359,11 +390,19 @@ export default function AboutPage() {
                   <ul className="space-y-2 text-sm text-primary-foreground/80">
                     <li>
                       <span className="font-semibold text-white">Varsity Tennis:</span>{' '}
-                      staying composed in singles and doubles positions under match pressure.
+                      staying composed and consistent in high-pressure singles and doubles situations.
+                    </li>
+                    <li>
+                      <span className="font-semibold text-white">Student Council:</span>{' '}
+                      building communication, organization, and follow-through in a school leadership setting.
+                    </li>
+                    <li>
+                      <span className="font-semibold text-white">Community Design Work:</span>{' '}
+                      applying engineering in practical ways that directly help school programs and real users.
                     </li>
                     <li>
                       <span className="font-semibold text-white">Transferable Skills:</span>{' '}
-                      teaching, calm decision-making, and consistency — the same skills needed on launch day.
+                      teaching, calm decision-making, teamwork, and consistency, which are the same skills needed on launch day.
                     </li>
                   </ul>
                 </GlassCard>
