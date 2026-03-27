@@ -25,7 +25,7 @@ const cardItem = {
 
 export default function ContactPage() {
   const [copied, setCopied] = useState(false);
-  const email = 'sdo92122@hotmail.com';
+  const email = 'saahil.doshi@outlook.com';
 
   const handleCopy = async () => {
     try {
@@ -71,7 +71,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <p className="text-sm uppercase tracking-[0.28em] text-accentneongreen/80">Email</p>
-                <p className="mt-1 text-white">sdo92122@hotmail.com</p>
+                <p className="mt-1 text-white">saahil.doshi@outlook.com</p>
               </div>
             </div>
             <p className="mt-4 text-primary-foreground/70">Direct email is the fastest way to reach me.</p>
@@ -164,7 +164,7 @@ export default function ContactPage() {
             asChild
             className="rounded-full bg-accentneongreen px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-primary hover:bg-accentneongreen/90"
           >
-            <a href="mailto:sdo92122@hotmail.com">Email Me</a>
+            <a href="mailto:saahil.doshi@outlook.com">Email Me</a>
           </Button>
         </div>
       </motion.div>
