@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Rocket, Wind, Users, GraduationCap, Trophy, Wrench } from 'lucide-react';
+import { Rocket, Wind, Users, GraduationCap } from 'lucide-react';
 
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/button';
@@ -55,14 +55,14 @@ function FactPill({ label, value }: FactPillProps) {
   return (
     <div className="flex items-center justify-between gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-xs md:text-sm">
       <span className="uppercase tracking-[0.25em] text-accentneongreen/80">{label}</span>
-      <span className="font-medium text-primary-foreground/90 text-right">{value}</span>
+      <span className="text-right font-medium text-primary-foreground/90">{value}</span>
     </div>
   );
 }
 
 const introParagraphs = [
   'I am a high school student at Oconee County High School, class of 2027, with a focused interest in aerospace and mechanical engineering. Rather than only studying theory, I spend most of my time designing, simulating, and building systems that actually fly: high-power research rockets, competition vehicles, and experimental airfoils.',
-  'My work spans national rocketry competitions, NASA’s Student Launch Initiative, undergraduate-level research at the University of Georgia, leadership in Civil Air Patrol, and hands-on design work for my school community. Across these projects, I have learned how to move from an idea to a fully documented, tested system while balancing analytical modeling, CAD and simulation, documentation, communication, and team leadership.',
+  'My work spans national rocketry competitions, NASA’s Student Launch Initiative, undergraduate-level research at the University of Georgia, and leadership in the Civil Air Patrol. Across these projects, I have learned how to move from an idea to a fully documented, tested system while balancing analytical modeling, CAD and simulation, documentation, and team leadership.',
 ];
 
 const quickFacts = [
@@ -82,14 +82,6 @@ const quickFacts = [
     label: 'Leadership',
     value: 'Civil Air Patrol Cadet Commander',
   },
-  {
-    label: 'Activities',
-    value: 'Varsity Tennis · Student Council',
-  },
-  {
-    label: 'Service',
-    value: 'STEM Outreach · School Design Work',
-  },
 ];
 
 const highlightRails = [
@@ -106,22 +98,12 @@ const highlightRails = [
   {
     icon: Users,
     label: 'Leadership',
-    text: 'Cadet Commander, student leadership, outreach lessons, and mentorship.',
+    text: 'Cadet Commander, outreach lessons, and technical documentation.',
   },
   {
     icon: GraduationCap,
     label: 'Academics',
-    text: 'Advanced coursework, research experience, and technical writing.',
-  },
-  {
-    icon: Wrench,
-    label: 'Design Build',
-    text: 'Practical CAD and 3D printing projects for teams, classrooms, and school programs.',
-  },
-  {
-    icon: Trophy,
-    label: 'Athletics',
-    text: 'Varsity tennis experience that has strengthened discipline and composure.',
+    text: 'Governor’s Honors Program in Mechanical & Aerospace Engineering.',
   },
 ];
 
@@ -220,11 +202,8 @@ export default function AboutPage() {
     <div className="min-h-screen bg-primary text-primary-foreground">
       <div className="mx-auto max-w-6xl px-6 pb-24">
         {/* Intro / hero card */}
-        <motion.section
-          {...sectionMotionProps}
-          className="pt-20"
-        >
-          <GlassCard className="p-6 md:p-8 bg-gradient-to-br from-white/5 via-black/40 to-accentneongreen/10">
+        <motion.section {...sectionMotionProps} className="pt-20">
+          <GlassCard className="bg-gradient-to-br from-white/5 via-black/40 to-accentneongreen/10 p-6 md:p-8">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] lg:items-start">
               <div className="space-y-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accentneongreen/80">
@@ -242,7 +221,7 @@ export default function AboutPage() {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true, amount: 0.35 }}
-                  className="space-y-4 text-sm md:text-base leading-relaxed text-primary-foreground/80"
+                  className="space-y-4 text-sm leading-relaxed text-primary-foreground/80 md:text-base"
                 >
                   {introParagraphs.map((paragraph) => (
                     <motion.p key={paragraph} variants={itemVariants}>
@@ -289,7 +268,7 @@ export default function AboutPage() {
         {/* Focus projects */}
         <motion.div {...sectionMotionProps}>
           <Section id="work" title="What I’m working on" kicker="Focus Projects">
-            <p className="text-sm md:text-base text-primary-foreground/80">
+            <p className="text-sm text-primary-foreground/80 md:text-base">
               A few of the projects and activities that define my current trajectory:
             </p>
             <motion.div
@@ -328,7 +307,7 @@ export default function AboutPage() {
         {/* Skills */}
         <motion.div {...sectionMotionProps}>
           <Section id="skills" title="Skills & tools" kicker="Toolbox">
-            <p className="text-sm md:text-base text-primary-foreground/80">
+            <p className="text-sm text-primary-foreground/80 md:text-base">
               Through these projects and activities, I’ve built a set of technical and leadership skills that I continue to deepen.
             </p>
             <motion.div
@@ -339,10 +318,7 @@ export default function AboutPage() {
               className="mt-8 grid gap-8 md:grid-cols-2"
             >
               {skillGroups.map((group) => (
-                <motion.div
-                  key={group.title}
-                  variants={itemVariants}
-                >
+                <motion.div key={group.title} variants={itemVariants}>
                   <GlassCard className="h-full p-6">
                     <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accentneongreen/80">
                       {group.title}
@@ -374,7 +350,7 @@ export default function AboutPage() {
             >
               <motion.div variants={itemVariants}>
                 <GlassCard className="p-6 md:p-7">
-                  <div className="space-y-4 text-sm md:text-base text-primary-foreground/80">
+                  <div className="space-y-4 text-sm text-primary-foreground/80 md:text-base">
                     {beyondEngineering.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
@@ -383,7 +359,7 @@ export default function AboutPage() {
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <GlassCard className="p-6 md:p-7 space-y-4">
+                <GlassCard className="space-y-4 p-6 md:p-7">
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accentneongreen/80">
                     How this shapes me
                   </p>
@@ -421,8 +397,8 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.25 }}
             >
               <motion.div variants={itemVariants}>
-                <GlassCard className="p-6 md:p-7 space-y-6">
-                  <p className="text-sm md:text-base text-primary-foreground/80">
+                <GlassCard className="space-y-6 p-6 md:p-7">
+                  <p className="text-sm text-primary-foreground/80 md:text-base">
                     I am looking for opportunities to contribute to ambitious aerospace and mechanical engineering
                     projects, whether through research, design teams, or summer programs. If you are working on
                     something where a motivated high school engineer with hands-on rocketry, CFD, CAD, and leadership
