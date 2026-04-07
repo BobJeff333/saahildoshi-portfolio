@@ -45,10 +45,10 @@ export default function LevelOneFleetPage() {
       <Section id="overview" title="Mission Overview" kicker="Overview">
         <div className="grid gap-6 md:grid-cols-5">
           <StatCard label="Apogee" value="2687 ft" />
-          <StatCard label="Stability" value="1.95 cal / 13.7%" />
+          <StatCard label="Stability" value="2 cal / 14%" />
           <StatCard label="Length" value="51.378 in" />
-          <StatCard label="CG" value="27.096 in" />
-          <StatCard label="CP" value="34.117 in" />
+          <StatCard label="CG" value="27.185 in" />
+          <StatCard label="CP" value="34.392 in" />
         </div>
 
         <p>
@@ -89,9 +89,9 @@ export default function LevelOneFleetPage() {
           <FigureCard src="/images/level1/OpenRocket-Simulation.png" caption="OpenRocket configuration view of the BEAMS rocket." />
           <div className="grid gap-4 sm:grid-cols-2">
             <StatCard label="Apogee" value="2687 ft" />
-            <StatCard label="Stability" value="1.95 cal / 13.7%" />
+            <StatCard label="Stability" value="2 cal / 14%" />
             <StatCard label="Length" value="51.378 in" />
-            <StatCard label="CG / CP" value="27.096 in / 34.117 in" />
+            <StatCard label="CG / CP" value="27.185 in / 34.392 in" />
           </div>
         </div>
       </Section>
