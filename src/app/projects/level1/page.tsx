@@ -73,7 +73,7 @@ export default function LevelOneFleetPage() {
 
         <div className="section-grid">
           <FigureCard
-            src="/images/level1/beams-payload-cad-cross-section.png"
+            src="/images/level1/BEAMS-Payload-CAD.png"
             caption="Cross-sectional CAD view of the BEAMS payload section and modular internal architecture."
           />
         </div>
@@ -86,7 +86,7 @@ export default function LevelOneFleetPage() {
         </p>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <FigureCard src="/images/level1/beams-openrocket-simulation.png" caption="OpenRocket configuration view of the BEAMS rocket." />
+          <FigureCard src="/images/level1/OpenRocket-Simulation.png" caption="OpenRocket configuration view of the BEAMS rocket." />
           <div className="grid gap-4 sm:grid-cols-2">
             <StatCard label="Apogee" value="2687 ft" />
             <StatCard label="Stability" value="1.95 cal / 13.7%" />
