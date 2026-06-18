@@ -63,7 +63,7 @@ const PROJECTS: ProjectCard[] = [
 const STRENGTHS: Strength[] = [
   {
     title: 'Aerodynamics & Flight Simulation',
-    description: 'OpenRocket, RASAero, and CFD-informed performance envelopes with sensitivity studies.',
+    description: 'OpenRocket and CFD-informed performance envelopes with sensitivity studies.',
     icon: Wind,
   },
   {
