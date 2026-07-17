@@ -1,234 +1,158 @@
-'use client';
-
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-
 import AnimatedHero from '@/components/animated/AnimatedHero';
-import { AnimatedSection } from '@/components/animated/AnimatedSection';
-import { ArrowUpRight } from 'lucide-react';
-import { Section } from '@/components/layout/Section';
-import { StatCard } from '@/components/layout/StatCard';
+import {
+  DecisionGrid,
+  ProjectActions,
+  ProjectBrief,
+  ProjectStats,
+  PullQuote,
+  TechnicalList,
+} from '@/components/layout/CaseStudy';
 import { FigureCard } from '@/components/layout/FigureCard';
-import { Button } from '@/components/ui/button';
+import { Section } from '@/components/layout/Section';
 
-const HERO_STATS = [
-  { label: 'Program Intensity', value: '4 weeks · ~65 hours/week' },
-  { label: 'Measured Output', value: '24 g total thrust' },
-  { label: 'My Role', value: 'Engine subteam · Airfoil analysis · CAD integration' },
-];
-
-const DESIGN_ITERATIONS = [
-  {
-    title: 'V1 — Initial cathode/anode exploration',
-    detail:
-      'Investigated mesh, serrated blade, and wire cathodes with single and dual-rod anodes to find stable corona discharge; rejected wire cathodes and copper-plated anodes for low conductivity and weak corona.',
-  },
-  {
-    title: 'V2 — Modular flowrate units',
-    detail:
-      'Shifted from ~120 g wing-mounted engines (~2.2 m/s flow) to 5-inch modular units aligned to ribs for manufacturability and better attachment, enabling quicker swaps and repeatable geometry.',
-  },
-  {
-    title: 'V3 — Final stacked geometry',
-    detail:
-      'Documented the final decision: four 20-inch units, dual sheet-metal anodes with a single sheet-metal cathode, acrylic brackets, one transformer per unit; achieved ~6 g thrust per unit (~24 g total) at ~170 g mass.',
-  },
-];
-
-const MEDIA = [
-  { src: '/images/eras2-engine.svg', caption: 'Modular ionic engine units with acrylic brackets and sheet-metal electrodes.' },
-  { src: '/images/eras2-airframe.svg', caption: 'WASP-derived airfoil with rectangular V3 wing and engine hardpoints.' },
-  { src: '/images/eras2-hero.svg', caption: 'Integrated ERAS2 airframe and propulsion configuration.' },
+const stats = [
+  { label: 'Program intensity', value: '4 weeks · ~65 hr/week' },
+  { label: 'Measured output', value: '24 g total thrust' },
+  { label: 'Responsibility', value: 'Engine design & integration' },
 ];
 
 export default function Eras2ProjectPage() {
   return (
-    <div className="min-h-screen bg-primary text-primary-foreground">
+    <main className="min-h-screen bg-primary text-primary-foreground">
       <AnimatedHero
-        image="/images/eras2-engine.svg"
-        badge="Georgia Governor’s Honors Program · 2025 · Mechanical & Aerospace Engineering"
-        title="ERAS2 — Electrohydrodynamic Remote Aircraft System"
-        subtitle="A GHP capstone project to design, build, and test an ionic-wind–powered aircraft, combining electrohydrodynamic propulsion with a lightweight, student-designed airframe."
-        actions={(
-       <div className="flex flex-wrap items-center gap-3">
-  <Button asChild size="lg" className="rounded-full">
-    <Link
-      href="/projects/ghp-mechanical-aero"
-      className="inline-flex items-center gap-2"
-    >
-      About GHP
-      <ArrowUpRight className="h-4 w-4" />
-    </Link>
-  </Button>
-</div>
-        )}
+        image="/images/eras2/Plane-In-Workshop.jpeg"
+        badge="Georgia Governor’s Honors Program · 2025"
+        title="ERAS2 — electroaerodynamic aircraft"
+        subtitle="A four-week systems-engineering sprint to design, fabricate, test, and integrate an ionic-wind propulsion system into a flight-capable airframe."
       />
-      <div className="mx-auto max-w-6xl space-y-16 px-6 py-16">
-        <AnimatedSection>
-          <div className="grid gap-6 md:grid-cols-3">
-            {HERO_STATS.map((stat) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.45, ease: 'easeOut' }}
-              >
-                <StatCard label={stat.label} value={stat.value} />
-              </motion.div>
-            ))}
+      <ProjectStats items={stats} />
+
+      <Section id="overview" title="A propulsion problem constrained by the aircraft" kicker="Case study">
+        <ProjectBrief
+          items={[
+            {
+              label: 'My role',
+              title: 'Engine subteam',
+              detail: 'I developed electrode concepts, defined thrust-testing procedures, documented nonconformances, and coordinated engine-to-wing interfaces with the Flight team.',
+            },
+            {
+              label: 'Design challenge',
+              title: 'Thrust, mass, and corona stability',
+              detail: 'The propulsion system needed repeatable discharge, adequate airflow, safe high-voltage operation, and attachment geometry that the lightweight airframe could actually carry.',
+            },
+            {
+              label: 'Outcome',
+              title: 'A functioning 24 g engine system',
+              detail: 'Four 20-inch modules produced approximately 6 g each and were integrated into the completed aircraft for launch and flight testing.',
+            },
+          ]}
+        />
+        <div className="grid gap-10 pt-4 lg:grid-cols-[1.25fr,0.75fr]">
+          <div className="space-y-5">
+            <p>
+              ERAS2 was the capstone for GHP’s Mechanical & Aerospace Engineering major. Our cohort developed a remote aircraft propelled by electrohydrodynamic thrust: a high-voltage field ionizes and accelerates air without a propeller or other moving propulsion components.
+            </p>
+            <p>
+              I worked primarily on the engine system while supporting airfoil analysis and CAD integration. The work moved continuously between electrode geometry, physical tests, mass estimates, structural interfaces, and failure documentation in Jira.
+            </p>
           </div>
-        </AnimatedSection>
+          <PullQuote>Maximizing isolated thrust was not enough; the engine had to become part of a viable aircraft.</PullQuote>
+        </div>
+      </Section>
 
-        <Section id="overview" title="Project Overview" kicker="Overview">
-          <AnimatedSection className="space-y-6">
-            <p>
-              ERAS2 (Electrohydrodynamic Remote Aircraft System 2) was the capstone project for the Mechanical & Aerospace Engineering major at the Georgia Governor’s Honors Program. Across a four-week residential program averaging approximately 65 hours per week, our cohort designed and built a flight vehicle powered by an ionic wind engine—an electrohydrodynamic propulsion system that accelerates air using high-voltage electric fields instead of moving parts. We used Jira to manage design iterations, test plans, and nonconformance reports.
-            </p>
-            <p>
-              I served on the <strong>Engine subteam</strong>, focusing on iterative design, testing, and integration of the ionic thruster while also supporting <strong>airfoil selection and analysis</strong> for the wing. The final functioning engine produced approximately <strong>24 g of total measured thrust</strong>. Working alongside the Flight and Electronics teams, we balanced thrust, mass, structural strength, and stability under a compressed schedule.
-            </p>
-          </AnimatedSection>
-        </Section>
+      <Section id="development" title="Three decisions shaped the final engine" kicker="Design evolution">
+        <DecisionGrid
+          items={[
+            {
+              label: 'V1 · Discharge',
+              title: 'Reject weak electrode concepts',
+              detail: 'Wire cathodes and copper-plated anodes did not provide the conductivity, corona stability, or mass efficiency we needed. Serrated sheet metal produced a stronger, more visible discharge.',
+            },
+            {
+              label: 'V2 · Modularity',
+              title: 'Break the span into testable units',
+              detail: 'We replaced heavy wing-length concepts with modular units aligned to structural ribs. This made electrode spacing repeatable and allowed damaged sections to be swapped quickly.',
+            },
+            {
+              label: 'V3 · Integration',
+              title: 'Stack four flight-ready modules',
+              detail: 'The final system used four 20-inch units, acrylic brackets, dual sheet-metal anodes, one serrated cathode per unit, and a dedicated transformer for each module.',
+            },
+          ]}
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          <FigureCard
+            src="/images/eras2/Engine-Thrust-Test-Rig.jpeg"
+            caption="Final electrode modules in the rigid thrust-test fixture."
+            fit="cover"
+          />
+          <FigureCard
+            src="/images/eras2/FEA-Final-Engine-Design.png"
+            caption="Structural analysis used to evaluate the final engine support geometry."
+          />
+        </div>
+      </Section>
 
-        <Section id="constraints" title="Mission & Constraints" kicker="Mission Goals">
-          <AnimatedSection className="space-y-6">
-            <div className="grid gap-8 lg:grid-cols-[1.1fr,1fr]">
-              <div className="space-y-4">
-                <p className="text-primary-foreground/80">Mission goals included:</p>
-                <ul className="list-disc space-y-3 pl-6 text-primary-foreground/80">
-                  <li>Design a remotely launched, electric, propellerless aircraft using an ionic-wind engine as the primary thrust source.</li>
-                  <li>Integrate engine, airframe, and electronics into a single flight-ready system.</li>
-                  <li>Collect and interpret experimental data on thrust, airflow velocity, and structural performance.</li>
-                </ul>
-              </div>
-              <div className="space-y-4">
-                <p className="text-primary-foreground/80">Key constraints:</p>
-                <ul className="list-disc space-y-3 pl-6 text-primary-foreground/80">
-                  <li>Strict mass budget at the aircraft and engine level driven by lift capacity and structural limits.</li>
-                  <li>Limited high-voltage power budget with transformers pulling roughly 0.7 A at 12 V.</li>
-                  <li>Safety and reliability considerations around arcing risk and fragile balsa/basswood structures.</li>
-                  <li>Extremely compressed schedule—only a few weeks to progress from concept to multiple flightable iterations.</li>
-                </ul>
-              </div>
-            </div>
-          </AnimatedSection>
-        </Section>
+      <Section id="verification" title="Testing converted failures into interface changes" kicker="Verification">
+        <TechnicalList
+          items={[
+            { label: 'Thrust method', value: 'A rigid enclosure transferred engine force to a scale; mass change was logged and converted to thrust for geometry comparisons.' },
+            { label: 'Electrical load', value: 'Each high-voltage transformer drew approximately 0.7 A at 12 V, making power distribution and safe clearances part of the integration problem.' },
+            { label: 'Flow comparison', value: 'Copper wrapping did not materially improve airflow: approximately 2.3 m/s compared with a 2.37 m/s control, so the added mass was rejected.' },
+            { label: 'Corrective action', value: 'After an attachment failure, I documented the nonconformance and helped move the design toward one-piece brackets and spar-aligned hardpoints.' },
+          ]}
+        />
+        <div className="grid gap-6 md:grid-cols-[0.8fr,1.2fr]">
+          <FigureCard
+            src="/images/eras2/Anode-Fabrication.jpg"
+            caption="Fabricating a lightweight electrode support with repeatable spacing."
+            portrait
+            fit="cover"
+          />
+          <FigureCard
+            src="/images/eras2/Plane-In-Workshop.jpeg"
+            caption="Integrated airframe in the lab, showing the spanwise engine installation and central electronics bay."
+            portrait
+            fit="cover"
+            position="object-center"
+          />
+        </div>
+      </Section>
 
-        <Section id="engine" title="Engine System" kicker="Electrohydrodynamic Propulsion">
-          <AnimatedSection className="space-y-6">
+      <Section id="flight" title="The finished system reached flight testing" kicker="Outcome">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr,1.2fr] lg:items-start">
+          <div className="space-y-5">
             <p>
-              The ionic engine relied on high-voltage electric fields to accelerate ions and create airflow with no moving parts. Working on the Engine subteam meant balancing thrust, corona stability, mass, and manufacturability while ensuring the design could mount cleanly to the wing. I was responsible for ERAS2-7 initial engine designs, evaluating cathode/anode geometries using wire mesh, sheet metal, and wire to see which produced a stable discharge and measurable flow.
+              The final engine produced approximately <strong className="text-white">24 g of total measured thrust</strong>. The rectangular WASP-derived wing simplified manufacturing while providing a broad lift-to-drag plateau, and spar-integrated hardpoints resolved the primary engine attachment risk.
             </p>
             <p>
-              When early wire and copper-plated concepts produced weak corona or insufficient conductivity, I documented the failures and steered the team toward serrated sheet-metal cathodes and more rigid anode concepts. I also defined the Engine Test Setup (ERAS2-8), specifying the thrust measurement enclosure and procedures using a kitchen scale to convert mass change to Newtons of thrust in our shared log. After the first flight attempt exposed a bracket failure (ERAS2-101), I proposed corrective actions to redesign attachments and integrate hardpoints into the wing spar.
+              The resulting aircraft progressed from a workshop assembly to launcher tests and a functioning airborne system. More importantly, the project established a disciplined loop: test, document, correct, and verify at the system level.
             </p>
-            <div className="space-y-4 rounded-2xl border border-white/5 bg-white/5 p-6">
-              <p className="text-primary-foreground/80">Design iterations I led and documented:</p>
-              <ul className="space-y-3 text-primary-foreground/80">
-                {DESIGN_ITERATIONS.map((item) => (
-                  <li key={item.title} className="rounded-xl border border-white/5 bg-primary/60 p-4">
-                    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accentneongreen/80">{item.title}</p>
-                    <p className="mt-2 text-primary-foreground/80">{item.detail}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </AnimatedSection>
-        </Section>
+          </div>
+          <FigureCard
+            src="/images/eras2/ERAS2-Plane-Flying.jpeg"
+            caption="ERAS2 airborne during the final test campaign."
+            fit="cover"
+          />
+        </div>
+        <FigureCard
+          src="/images/eras2/Full-Team-Photo-With-Plane.PNG"
+          caption="The ERAS2 cohort with the completed electroaerodynamic aircraft."
+          wide
+          fit="cover"
+          position="object-center"
+        />
+      </Section>
 
-        <Section id="airframe" title="Airframe & Airfoils" kicker="Wing, Integration, and CAD">
-          <AnimatedSection className="space-y-6">
-            <p>
-              Building on my airfoil research experience, I supported the Flight team in selecting the <strong>WASP (smoothed) airfoil</strong>, which offered a broad Cl/Cd plateau up to roughly 10° angle of attack for stable lift-to-drag performance. Early V1/V2 wings explored more complex geometries with taper, but we ultimately moved to a rectangular V3 wing to simplify builds while retaining lift.
-            </p>
-            <p>
-              The Flight team added modified ribs with hardpoints inside the wingbox so our Engine subteam could mount or swap engines with 1/4″ fasteners. In CAD, I aligned engine brackets to these hardpoints, preserved anode–cathode spacing, and resolved interferences with spars and struts to keep the engine clear of structural members.
-            </p>
-            <div className="grid gap-6 md:grid-cols-3">
-              {MEDIA.map((media, index) => (
-                <motion.div
-                  key={media.src}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.45, ease: 'easeOut', delay: index * 0.05 }}
-                >
-                  <FigureCard src={media.src} caption={media.caption} />
-                </motion.div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </Section>
-
-        <Section id="testing" title="Testing & Data" kicker="Experimental Workflow">
-          <AnimatedSection className="space-y-6">
-            <p>
-              Engine testing used a structured stand with adjustable anode–cathode spacing, capturing airflow velocity and thrust as mass change on a scale converted to Newtons. We compared cathode geometries, copper wrapping, and modular unit configurations to understand which setups produced reliable flow and thrust without excessive mass.
-            </p>
-            <div className="space-y-3 rounded-2xl border border-white/5 bg-white/5 p-6">
-              <p className="text-primary-foreground/80">Key findings:</p>
-              <ul className="list-disc space-y-3 pl-6 text-primary-foreground/80">
-                <li>
-                  <strong className="text-white">Cathode geometry mattered more than wire material:</strong> serrated sheet-metal cathodes with spaced triangular points produced the most visible corona and highest thrust.
-                </li>
-                <li>
-                  <strong className="text-white">Copper electroplating was not worth the mass:</strong> wrapping electrodes in copper tape did not significantly change flow speed (~2.3 m/s vs ~2.37 m/s control).
-                </li>
-                <li>
-                  <strong className="text-white">Structured engine units outperformed ad-hoc setups:</strong> modular 5-inch brackets and stacked units yielded repeatable thrust and simpler integration.
-                </li>
-              </ul>
-            </div>
-            <p>
-              Safety improvements included relocating the stand to prevent proximity to the discharge plume after a near-miss during testing, standardizing enclosures, and keeping measurement stations clear of observers.
-            </p>
-          </AnimatedSection>
-        </Section>
-
-        <Section id="integration" title="Integration & Flight Readiness" kicker="Mass, Structure, and Attachments">
-          <AnimatedSection className="space-y-6">
-            <p>
-              Engine and airframe integration revolved around mass budgets and structural changes. Initial estimates placed the system near 1 kg with the engine dominating mass; successive V2/V3 iterations brought the target nearer to 700 g through bracket redesigns and simplified structures. Wingbox changes, additional spars, and nose-spar braces were added specifically to carry engine loads.
-            </p>
-            <p>
-              When the first attachment failed, I documented the nonconformance and helped define corrective actions: one-piece brackets, better material choices, and hardpoint alignment that preserved thrust line and spacing. Those updates enabled the stacked V3 engine to mount securely while meeting the airframe’s lift and stability needs.
-            </p>
-          </AnimatedSection>
-        </Section>
-
-        <Section id="reflection" title="Lessons & Reflection" kicker="Systems Perspective">
-          <AnimatedSection className="space-y-6">
-            <p>
-              ERAS2 was my first experience designing a propulsion system where the engine and the airframe were this tightly coupled. As an Engine subteam member, I learned that it wasn’t enough to maximize thrust in isolation—we had to hit mass budgets, attach to real structures, and survive crashes and non-ideal launches.
-            </p>
-            <p>
-              The project forced me to think like a systems engineer: translate test data into design decisions, coordinate CAD changes with the Flight team, and document failures as nonconformance tickets so the next iteration could be better. It also let me connect my previous airfoil-analysis experience with a completely different kind of propulsion. ERAS2 made clear how much I enjoy bridging detailed experimental work, CAD modeling, and big-picture design.
-            </p>
-          </AnimatedSection>
-        </Section>
-
-        <Section id="references" title="Research & References" kicker="Background">
-          <AnimatedSection className="space-y-6">
-            <p>
-              Our ERAS2 engine and airframe design drew on both prior electrohydrodynamic propulsion literature and internal experimental data.
-            </p>
-            <ul className="list-disc space-y-3 pl-6 text-primary-foreground/80">
-              <li>Open literature on electrohydrodynamic (ionic wind) propulsion and corona discharge physics to understand how high-voltage fields accelerate ions and generate thrust.</li>
-              <li>Previous ionic aircraft demonstrations used to benchmark realistic thrust-to-weight expectations and safety practices.</li>
-              <li>Internal test logs, Google Sheets for thrust and velocity data, and Jira decision tickets (ERAS2-7, ERAS2-8, ERAS2-101, ERAS2-137) documenting geometry changes, mass budgets, and engine performance over time.</li>
-            </ul>
-            <div className="flex flex-wrap gap-4">
-              <Button asChild variant="outline" size="sm" className="rounded-full border-accentneongreen/50 text-accentneongreen">
-                <Link href="/projects">Back to Projects</Link>
-              </Button>
-              <Button asChild variant="outline" size="sm" className="rounded-full border-accentneongreen/50 text-accentneongreen">
-                <Link href="/projects/ghp-mechanical-aero">Return to GHP Overview</Link>
-              </Button>
-            </div>
-          </AnimatedSection>
-        </Section>
-      </div>
-    </div>
+      <Section id="documentation" title="Documentation and program context" kicker="Next">
+        <p className="max-w-3xl">
+          The project was managed with Jira design tickets, test plans, and nonconformance reports, including ERAS2-7, ERAS2-8, ERAS2-101, and ERAS2-137. The broader GHP page explains the coursework and residential program surrounding this capstone.
+        </p>
+        <ProjectActions
+          primary={{ href: '/projects/ghp-mechanical-aero', label: 'View GHP program' }}
+          secondary={{ href: '/images/eras2/Anode%20Blades.pdf', label: 'Open anode drawing' }}
+        />
+      </Section>
+    </main>
   );
 }

@@ -63,8 +63,7 @@ const PROJECTS: Project[] = [
     discipline: 'Experimental propulsion',
     role: 'Engine subteam',
     result: '24 g total thrust',
-    image: '/images/eras2-engine.svg',
-    imageClassName: 'object-contain p-10',
+    image: '/images/eras2/Full-Team-Photo-With-Plane.PNG',
     tier: 'selected',
   },
   {
@@ -76,8 +75,7 @@ const PROJECTS: Project[] = [
     discipline: 'Leadership',
     role: 'Cadet Captain · Commander',
     result: '~30 cadets led',
-    image: '/images/cap/CAP.svg',
-    imageClassName: 'object-contain p-10',
+    image: '/images/cap/Color-Guard-Photo.JPEG',
     tier: 'additional',
   },
   {
@@ -101,8 +99,7 @@ const PROJECTS: Project[] = [
     discipline: 'Advanced study',
     role: 'Engineering scholar',
     result: '~260 residential hours',
-    image: '/images/ghp/ghp-lesson.svg',
-    imageClassName: 'object-contain p-10',
+    image: '/images/ghp/Full-GHP-Engineering(Including-Other-Concentrations).jpeg',
     tier: 'additional',
   },
 ];

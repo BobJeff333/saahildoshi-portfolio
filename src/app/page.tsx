@@ -44,8 +44,7 @@ const SELECTED_WORK: Array<{
     title: 'ERAS2 Ionic-Wind Aircraft',
     discipline: 'Experimental Propulsion · Systems',
     summary: 'Four-week residential engineering program culminating in a functioning electrohydrodynamic engine producing 24 g of total thrust.',
-    image: '/images/eras2-engine.svg',
-    imageClassName: 'object-contain p-10',
+    image: '/images/eras2/Plane-In-Workshop.jpeg',
   },
 ];
 

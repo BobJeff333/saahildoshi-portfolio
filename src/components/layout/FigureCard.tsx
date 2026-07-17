@@ -1,4 +1,5 @@
 import NextImage from 'next/image';
+import { cn } from '@/lib/utils';
 
 export type FigureCardProps = {
   src: string;
@@ -8,6 +9,9 @@ export type FigureCardProps = {
   landscape?: boolean;
   wide?: boolean;
   ultraWide?: boolean;
+  fit?: 'contain' | 'cover';
+  position?: string;
+  className?: string;
 };
 
 export function FigureCard({
@@ -18,6 +22,9 @@ export function FigureCard({
   landscape,
   wide,
   ultraWide,
+  fit = 'contain',
+  position,
+  className,
 }: FigureCardProps) {
   // Determine aspect ratio
   let aspectClass = "aspect-video"; // default
@@ -33,13 +40,13 @@ export function FigureCard({
   if (ultraWide) aspectClass = "aspect-[8/1]";
 
   return (
-    <figure className="flex flex-col overflow-hidden border border-white/10 bg-surface/70">
+    <figure className={cn('flex flex-col overflow-hidden border border-white/10 bg-surface/70', className)}>
       <div className={`relative w-full overflow-hidden ${aspectClass}`}>
         <NextImage
           src={src}
           alt={caption}
           fill
-          className="object-contain p-5"
+          className={cn(fit === 'cover' ? 'object-cover' : 'object-contain p-5', position)}
           sizes="(min-width: 1024px) 33vw, 100vw"
         />
       </div>

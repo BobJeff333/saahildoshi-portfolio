@@ -1,234 +1,139 @@
-import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
-import { Section } from '@/components/layout/Section';
-import { StatCard } from '@/components/layout/StatCard';
+import AnimatedHero from '@/components/animated/AnimatedHero';
+import {
+  DecisionGrid,
+  ProjectActions,
+  ProjectBrief,
+  ProjectStats,
+  PullQuote,
+  TechnicalList,
+} from '@/components/layout/CaseStudy';
 import { FigureCard } from '@/components/layout/FigureCard';
-import { Button } from '@/components/ui/button';
+import { Section } from '@/components/layout/Section';
+
+const stats = [
+  { label: 'Simulated apogee', value: '2,687 ft' },
+  { label: 'Stability margin', value: '1.95 calibers' },
+  { label: 'Certification', value: 'NAR Level 1 · in progress' },
+];
 
 export default function LevelOneFleetPage() {
   return (
-    <div className="space-y-12 pb-24">
-      <section
-        className="relative isolate overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/level1/IMG_6786.jpeg')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-primary/80 to-primary" />
+    <main className="min-h-screen bg-primary text-primary-foreground">
+      <AnimatedHero
+        image="/images/level1/IMG_6786.jpeg"
+        badge="Published AIAA project · NAR Level 1 in progress"
+        title="BEAMS — a biological payload inside a modular launch platform"
+        subtitle="A mission-specific rocket configuration studying how high-power flight stresses affect bean samples, developed within a reusable segmented-airframe research program."
+      />
+      <ProjectStats items={stats} />
 
-        <div className="relative mx-auto grid max-w-6xl gap-8 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div>
-            <span className="inline-flex items-center rounded-full border border-accentneongreen/30 bg-accentneongreen/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accentneongreen">
-              Published AIAA Project · NAR Level 1 In Progress
-            </span>
-
-            <h1 className="mt-6 text-4xl font-bold text-white sm:text-5xl">
-              BEAMS Rocket | Level 1 Certification Vehicle
-            </h1>
-
-            <p className="mt-4 max-w-2xl text-lg text-primary-foreground/80">
-              This page highlights the BEAMS rocket within the larger Oconee County Rocketry Association modular
-              rocket program. The overall project explored how structurally segmented, threaded launch vehicles can
-              support rapid, reusable experimentation, while BEAMS served as my mission-specific configuration: a
-              layered payload system designed to study how high-power flight stresses affect bean sample growth and
-              health.
+      <Section id="overview" title="One vehicle architecture, multiple research missions" kicker="Case study">
+        <ProjectBrief
+          items={[
+            {
+              label: 'My focus',
+              title: 'BEAMS mission architecture',
+              detail: 'I developed the Botanical Experiment on Aeronautical Mechanical Stress concept, payload arrangement, and integration into the shared modular vehicle.',
+            },
+            {
+              label: 'Platform challenge',
+              title: 'Make reconfiguration structural',
+              detail: 'Mission sections needed repeatable threaded interfaces, useful internal volume, low-cost manufacturing, and stable flight across different payload geometries.',
+            },
+            {
+              label: 'Current outcome',
+              title: 'Published method; certification pending',
+              detail: 'The larger architecture and mission set were documented in an AIAA paper. My NAR Level 1 flight remains in progress.',
+            },
+          ]}
+        />
+        <div className="grid gap-10 pt-4 lg:grid-cols-[1.25fr,0.75fr]">
+          <div className="space-y-5">
+            <p>
+              The OCRA modular rocket project asked whether student teams could retain a common booster and avionics approach while swapping mission-specific sections. Structural segmentation and threaded joints let the airframe adapt without restarting every experiment from a blank sheet.
             </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button asChild>
-                <Link href="https://doi.org/10.2514/6.2026-112524" target="_blank" rel="noreferrer">
-                  Read Published Paper
-                  <ArrowUpRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-
-              <Button asChild variant="outline">
-                <Link href="/contact">Get in Touch</Link>
-              </Button>
-            </div>
+            <p>
+              BEAMS applied that architecture to a layered biological payload. It required more internal volume than several other missions, making transition geometry, payload restraint, mass distribution, and simulation central to the design.
+            </p>
           </div>
-
-          <FigureCard
-            src="/images/level1/Fig-1.png"
-            caption="Modeled launch vehicle and exploded structural segmentation view."
-          />
-        </div>
-      </section>
-
-      <Section id="overview" title="Project Overview" kicker="Overview">
-        <div className="grid gap-6 md:grid-cols-5">
-          <StatCard label="Apogee" value="2687 ft" />
-          <StatCard label="Stability" value="1.95 cal / 13.7%" />
-          <StatCard label="Length" value="51.378 in" />
-          <StatCard label="CG" value="27.096 in" />
-          <StatCard label="CP" value="34.117 in" />
-        </div>
-
-        <p>
-          The larger OCRA project asked a straightforward engineering question: how can student teams build one
-          reusable rocket architecture that supports many different experiments instead of redesigning a full vehicle
-          for every new mission? The published paper presents that answer through a modular launch vehicle system
-          built around structural segmentation, threaded interfaces, additive manufacturing, and mission-specific
-          reconfiguration.
-        </p>
-
-        <p>
-          Within that broader framework, BEAMS, short for Botanical Experiment on Aeronautical Mechanical Stress,
-          focused on a layered payload system designed to house bean samples and study how high-power flight stresses
-          affect plant growth and health. Other missions in the paper explored gyroscopic stabilization, rover
-          deployment, biological payload resilience, passive spin generation, and fin tubercle effects, showing the
-          range of experiments the same modular platform could support.
-        </p>
-      </Section>
-
-      <Section id="architecture" title="Modular Architecture" kicker="Design Methodology">
-        <p>
-          The core of the overall project is a modular rocket design built from structurally segmented airframe
-          sections connected by repeatable threaded joints. Instead of treating the body as one fixed vehicle, the
-          rocket can be reconfigured by swapping in mission-specific sections while keeping shared base components
-          such as the airframe, booster, and avionics architecture.
-        </p>
-
-        <p>
-          For BEAMS, that mattered because the mission required a larger internal payload volume. The transition
-          geometry shown in the paper makes that possible by stepping between body diameters while preserving
-          compatibility with the rest of the modular stack. This lets the BEAMS payload sit within the same overall
-          launch system rather than requiring a completely separate rocket.
-        </p>
-
-        <div className="grid gap-6 lg:grid-cols-2">
-          <FigureCard
-            src="/images/level1/Fig-2.png"
-            caption="Threaded interface CAD design and integration."
-          />
-          <FigureCard
-            src="/images/level1/Fig-4.png"
-            caption="BEAMS transition airframe panel; showing the mission-specific payload geometry."
-          />
+          <PullQuote>BEAMS is valuable because the experiment, the payload container, and the launch vehicle were designed as one configuration.</PullQuote>
         </div>
       </Section>
 
-      <Section id="manufacturing" title="Manufacturing & Reusability" kicker="Build Strategy">
-        <p>
-          The paper frames additive manufacturing as a major part of the project’s value. By segmenting the rocket
-          into roughly 10-inch sections, the team could manufacture the vehicle in-house instead of depending on
-          long, pre-made airframes. That reduced cost, simplified iteration, and made the system more practical for
-          repeated experimentation.
-        </p>
-
-        <p>
-          Across the project, ABS was used for printed airframe components because it balanced manufacturability,
-          cost, and thermal and mechanical tolerance. G12 fiberglass was selected for the fins to better survive
-          landing loads and preserve structural integrity after flight. Together, those choices supported the larger
-          goal of a reusable student research platform rather than a one-time vehicle.
-        </p>
-
-        <div className="section-grid">
-          <FigureCard
-            src="/images/level1/Fig-8.png"
-            caption="Manufactured and assembled rocket components."
-          />
+      <Section id="architecture" title="Threaded segmentation made the airframe reusable" kicker="Platform design">
+        <DecisionGrid
+          items={[
+            {
+              label: 'Structure',
+              title: 'Segment the airframe',
+              detail: 'Sections of roughly 10 inches fit common additive-manufacturing equipment and could be replaced individually after damage or design changes.',
+            },
+            {
+              label: 'Interface',
+              title: 'Standardize threaded joints',
+              detail: 'Repeatable connections let mission modules share a base vehicle while maintaining alignment and transferring flight and recovery loads.',
+            },
+            {
+              label: 'Materials',
+              title: 'Match material to failure mode',
+              detail: 'ABS supported economical printed airframe iteration; G12 fiberglass fins were selected for landing-load durability and continued reuse.',
+            },
+          ]}
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          <FigureCard src="/images/level1/Fig-1.png" caption="Modeled launch vehicle and exploded structural segmentation." />
+          <FigureCard src="/images/level1/Fig-2.png" caption="Threaded interface CAD and section integration." />
         </div>
       </Section>
 
-      <Section id="beams" title="BEAMS Mission Focus" kicker="Mission-Specific Configuration">
-        <p>
-          BEAMS was my mission within the larger modular rocket effort. The mission centered on creating a layered
-          internal payload system for bean samples, then integrating that payload into a reusable launch vehicle
-          architecture that could still meet high-power stability and certification requirements.
-        </p>
-
-        <p>
-          What makes BEAMS especially useful as a portfolio project is that it sits at the intersection of the full
-          system and the mission-specific design. It is not just a payload idea and not just a rocket body. It shows
-          how a focused experiment can drive geometry, packaging, simulation, and integration decisions within a
-          modular aerospace platform.
-        </p>
-      </Section>
-
-      <Section id="analysis" title="Simulation & Flight Analysis" kicker="Analysis">
-        <p>
-          The paper used OpenRocket to validate every mission configuration before launch preparation. For BEAMS,
-          that meant recreating the structurally segmented design in the simulation environment, then evaluating motor
-          options, geometry, and stability to confirm that the rocket met the baseline criteria for a successful and
-          controlled flight.
-        </p>
-
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <FigureCard
-            src="/images/level1/Fig-6.png"
-            caption="OpenRocket views of the BEAMS rocket."
-          />
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <StatCard label="Apogee" value="2687 ft" />
-            <StatCard label="Stability" value="1.95 cal / 13.7%" />
-            <StatCard label="Length" value="51.378 in" />
-            <StatCard label="CG / CP" value="27.096 in / 34.117 in" />
+      <Section id="beams" title="The BEAMS payload drove a distinct configuration" kicker="My contribution">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr,0.95fr] lg:items-start">
+          <div className="space-y-5">
+            <p>
+              BEAMS uses a layered internal payload to retain bean samples before and after exposure to launch acceleration, vibration, recovery deployment, and landing loads. The experiment turned biological sample protection into an aerospace packaging problem.
+            </p>
+            <p>
+              I worked on the mission concept, internal arrangement, and its compatibility with the shared platform. The larger payload volume required a transition between body diameters without abandoning common booster and avionics elements.
+            </p>
           </div>
+          <FigureCard src="/images/level1/BEAMS-Payload-CAD.png" caption="Layered BEAMS sample payload and internal packaging concept." />
         </div>
-
-        <div className="mt-6">
-          <FigureCard
-            src="/images/level1/Fig-7.png"
-            caption="Mission comparison table."
-          />
-        </div>
+        <FigureCard src="/images/level1/Fig-4.png" caption="BEAMS transition-airframe geometry within the modular stack." wide />
       </Section>
 
-      <Section id="certification" title="Level 1 Certification Framework" kicker="Certification">
-        <p>
-          The Level 1 side of this page matters because the overall project did not treat certification as a separate
-          afterthought. In the paper, Level 1 standards act as a common engineering benchmark across the modular
-          fleet, requiring safe flight on an H- or I-class motor, stable ascent, reliable recovery deployment, and
-          post-flight structural integrity.
-        </p>
-
-        <p>
-          For BEAMS, that framework translated into an H-class certification flight approach, OpenRocket-backed
-          stability verification, standardized recovery validation, and disciplined preflight procedures. Those checks
-          included center of gravity verification, inspection of threaded joints, motor retention checks, and recovery
-          packing verification before launch.
-        </p>
-      </Section>
-
-      <Section id="role" title="My Role" kicker="Contributions">
-        <p>
-          Within the larger modular rocket project, my focus was the BEAMS mission. I worked on shaping the mission
-          concept, the bean-sample payload architecture, and the way the BEAMS configuration fit into the shared
-          modular vehicle system. That meant thinking both at the full-project level, where reusability and
-          standardization mattered, and at the mission level, where payload layout, geometry, and simulation became
-          specific to BEAMS.
-        </p>
-      </Section>
-
-      <Section id="outcomes" title="Key Outcomes" kicker="Outcomes">
-        <div className="space-y-4">
-          <p>
-            Positioned BEAMS as a mission-specific research rocket within a larger reusable launch platform rather
-            than as a standalone one-off build.
-          </p>
-          <p>
-            Demonstrated how structural segmentation and threaded interfaces can support rapid reconfiguration across
-            multiple student aerospace experiments.
-          </p>
-          <p>
-            Integrated a layered bean-sample payload concept into a modular rocket architecture while maintaining
-            stable, simulation-backed flight characteristics.
-          </p>
-          <p>
-            Contributed to a project that advanced from design and modeling into a published AIAA paper documenting
-            the overall methodology and mission set.
-          </p>
-        </div>
-
-        <div className="mt-8">
-          <Button asChild>
-            <Link href="https://doi.org/10.2514/6.2026-112524" target="_blank" rel="noreferrer">
-              Read Published Paper
-              <ArrowUpRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+      <Section id="analysis" title="Simulation establishes the certification baseline" kicker="Flight analysis">
+        <TechnicalList
+          items={[
+            { label: 'Length', value: '51.378 in in the analyzed BEAMS configuration.' },
+            { label: 'Center of gravity', value: '27.096 in from the reference datum.' },
+            { label: 'Center of pressure', value: '34.117 in from the reference datum.' },
+            { label: 'Stability', value: '1.95 calibers, reported as 13.7% of vehicle length.' },
+            { label: 'Predicted apogee', value: '2,687 ft in the cited OpenRocket configuration.' },
+          ]}
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          <FigureCard src="/images/level1/Fig-6.png" caption="OpenRocket model and simulated flight configuration." />
+          <FigureCard src="/images/level1/Fig-7.png" caption="Comparison of mission configurations supported by the platform." />
         </div>
       </Section>
-    </div>
+
+      <Section id="certification" title="The flight milestone is still in progress" kicker="NAR Level 1">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr,0.8fr]">
+          <div className="space-y-5">
+            <p>
+              Level 1 certification provides the operational benchmark for this configuration: stable ascent on an H- or I-class motor, reliable recovery deployment, and a structurally intact vehicle after landing.
+            </p>
+            <p>
+              Preflight work includes measured center-of-gravity verification, inspection of every threaded interface, positive motor retention, and recovery packing checks. The certification is accurately listed as <strong className="text-white">in progress</strong> until that flight is completed.
+            </p>
+          </div>
+          <FigureCard src="/images/level1/Fig-8.png" caption="Manufactured modular components and assembled test hardware." fit="cover" />
+        </div>
+        <ProjectActions
+          primary={{ href: 'https://doi.org/10.2514/6.2026-112524', label: 'Read the AIAA paper', external: true }}
+          secondary={{ href: '/contact', label: 'Discuss the project' }}
+        />
+      </Section>
+    </main>
   );
 }
