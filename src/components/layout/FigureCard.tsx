@@ -33,19 +33,19 @@ export function FigureCard({
   if (ultraWide) aspectClass = "aspect-[8/1]";
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-surface">
+    <figure className="flex flex-col overflow-hidden border border-white/10 bg-surface/70">
       <div className={`relative w-full overflow-hidden ${aspectClass}`}>
         <NextImage
           src={src}
           alt={caption}
           fill
-          className="object-contain p-4"
+          className="object-contain p-5"
           sizes="(min-width: 1024px) 33vw, 100vw"
         />
       </div>
-      <div className="px-5 py-4 text-sm text-primary-foreground/70">
+      <figcaption className="border-t border-white/10 px-5 py-4 font-mono text-xs leading-5 text-primary-foreground/60">
         {caption}
-      </div>
-    </div>
+      </figcaption>
+    </figure>
   );
 }

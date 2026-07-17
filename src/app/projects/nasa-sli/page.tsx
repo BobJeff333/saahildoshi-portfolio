@@ -17,8 +17,8 @@ type MediaItem = {
 
 const stats = [
   { label: 'Length', value: '92 in (4" diameter)' },
-  { label: 'Target Apogee', value: '4,200–4,300 ft' },
-  { label: 'Liftoff Mass', value: '16.6 lb with motor' },
+  { label: 'Final Apogee', value: '4,274.8 ft' },
+  { label: 'My Role', value: 'Payload Team Lead' },
 ];
 
 const specificationRows = [
@@ -221,25 +221,24 @@ export default function NasaSliPage() {
       <section className="relative overflow-hidden">
         <div className="relative w-full aspect-video overflow-hidden rounded-none border-b border-white/10">
           <NextImage
-            src="/images/nasa-sli/SLI-Hero.png"
-            alt="SLI-Hero"
+            src="/images/nasa-sli/Onsite-Setup-Photo.png"
+            alt="Project RANCH vehicle undergoing field integration before flight"
             fill
-            className="object-contain p-4"
+            className="object-cover"
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-primary/85 to-primary" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/30" />
           <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-end gap-6 px-6 pb-16 sm:pb-20">
             <div className="max-w-3xl space-y-4">
-              <span className="inline-flex items-center rounded-full border border-accentneongreen/30 bg-accentneongreen/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accentneongreen">
+              <span className="eyebrow inline-flex border-l border-accentneongreen pl-3">
                 NASA Student Launch Initiative · 2024–2025
               </span>
-              <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+              <h1 className="text-4xl font-medium leading-[1.02] tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
                 NASA Student Launch Initiative — Project RANCH
               </h1>
               <p className="text-lg leading-relaxed text-primary-foreground/80">
-                92-inch fiberglass launch vehicle targeting a 4,200–4,300 ft apogee with redundant dual-deployment recovery, K-class
-                propulsion, and ACORN data-return payload.
+                92-inch fiberglass launch vehicle that reached 4,274.8 ft against an approximately 4,300 ft mission target, with redundant dual-deployment recovery, K-class propulsion, and the ACORN data-return payload.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4">
@@ -284,10 +283,29 @@ export default function NasaSliPage() {
           </p>
           <p>
             After two full-scale test flights validated ascent stability, charge sizing, and recovery sequencing, the final launch in
-            Huntsville reached approximately 4,300 feet—within the 4,200–4,300 foot target band—returning flight data via Featherweight GPS
+            Huntsville reached 4,274.8 feet—closely matching the approximately 4,300-foot mission target—returning flight data via Featherweight GPS
             and the ACORN payload. Outreach objectives were fulfilled through STEM lessons and community events aligned with the NASA SLI
             outreach rubric.
           </p>
+        </Section>
+      </AnimatedSection>
+
+      <AnimatedSection>
+        <Section id="role" title="Payload leadership and system interfaces" kicker="My Role">
+          <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
+            <div className="border-l border-accentneongreen/70 pl-5">
+              <p className="font-mono text-xs uppercase tracking-[0.14em] text-primary-foreground/45">Direct responsibility</p>
+              <p className="mt-3 text-2xl font-medium tracking-[-0.03em] text-white">Payload Team Lead</p>
+            </div>
+            <div className="space-y-5">
+              <p>
+                I led development and integration of the ACORN payload, coordinating its mechanical interfaces with the forward coupler and nose cone, its data-return requirements, and its compatibility with the vehicle&apos;s recovery and field-assembly sequence.
+              </p>
+              <p>
+                My work included payload architecture, CAD coordination, test planning, integration support, and technical documentation. The 4,274.8 ft flight result belongs to the full team; this case study identifies my ownership specifically where payload decisions affected packaging, instrumentation, and mission operations.
+              </p>
+            </div>
+          </div>
         </Section>
       </AnimatedSection>
 
@@ -399,7 +417,7 @@ export default function NasaSliPage() {
         <Section id="flight" title="Flight Campaign" kicker="Test Flights & Huntsville">
           <p>
             Two full-scale test flights validated recovery sequencing, charge sizing, and avionics redundancy before launch week. The final
-            flight in Huntsville, Alabama, achieved ~4,300 feet, matching simulation predictions and returning Featherweight GPS data and
+            flight in Huntsville, Alabama, achieved 4,274.8 feet, closely matching the mission target and returning Featherweight GPS data and
             RRC3+ altimeter logs. Field operations emphasized pad prep discipline, independent arming checks, and rapid post-flight
             inspection of separation hardware and harnessing.
           </p>

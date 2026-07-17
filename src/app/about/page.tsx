@@ -1,428 +1,107 @@
-'use client';
-
-import type { ReactNode } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Rocket, Wind, Users, GraduationCap } from 'lucide-react';
+import { ArrowUpRight, Download } from 'lucide-react';
 
-import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/button';
 
-const sectionMotionProps = {
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.3 },
-  transition: { duration: 0.6, ease: 'easeOut' },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0 },
-};
-
-type GlassCardProps = {
-  children: ReactNode;
-  className?: string;
-};
-
-function GlassCard({ children, className = '' }: GlassCardProps) {
-  return (
-    <div
-      className={[
-        'rounded-2xl border border-white/5 bg-white/5/10 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur-xl',
-        className,
-      ].join(' ')}
-    >
-      {children}
-    </div>
-  );
-}
-
-type FactPillProps = {
-  label: string;
-  value: string;
-};
-
-function FactPill({ label, value }: FactPillProps) {
-  return (
-    <div className="flex items-center justify-between gap-3 rounded-full border border-white/10 bg-black/40 px-4 py-2 text-xs md:text-sm">
-      <span className="uppercase tracking-[0.25em] text-accentneongreen/80">{label}</span>
-      <span className="text-right font-medium text-primary-foreground/90">{value}</span>
-    </div>
-  );
-}
-
-const introParagraphs = [
-  'I am a high school student at Oconee County High School, class of 2027, with a focused interest in aerospace and mechanical engineering. Rather than only studying theory, I spend most of my time designing, simulating, and building systems that actually fly: high-power research rockets, competition vehicles, and experimental airfoils.',
-  'My work spans national rocketry competitions, NASA’s Student Launch Initiative, undergraduate-level research at the University of Georgia, and leadership in the Civil Air Patrol. Across these projects, I have learned how to move from an idea to a fully documented, tested system while balancing analytical modeling, CAD and simulation, documentation, and team leadership.',
+const METHODS = [
+  ['Flight analysis', 'OpenRocket stability, performance trade studies, motor selection, and flight reconstruction.'],
+  ['Aerodynamics', 'XFOIL viscous/inviscid analysis, experimental comparison, and wind-tunnel validation.'],
+  ['Design & fabrication', 'Fusion 360, parametric assemblies, additive manufacturing, fiberglass structures, and integration fixtures.'],
+  ['Avionics & data', 'Redundant deployment electronics, GPS telemetry, wiring architecture, and post-flight data analysis.'],
+  ['Technical communication', 'NASA design reviews, engineering reports, research presentations, and STEM instruction.'],
+  ['Leadership', 'Technical-team coordination, cadet command, mentorship, outreach planning, and after-action review.'],
 ];
 
-const quickFacts = [
-  {
-    label: 'School',
-    value: 'Oconee County High School · Class of 2027',
-  },
-  {
-    label: 'Focus',
-    value: 'Aerospace & Mechanical Engineering',
-  },
-  {
-    label: 'Projects',
-    value: 'NASA SLI · ARC · UGA Airfoils',
-  },
-  {
-    label: 'Leadership',
-    value: 'Civil Air Patrol Cadet Commander',
-  },
-];
-
-const highlightRails = [
-  {
-    icon: Rocket,
-    label: 'Rocketry',
-    text: 'High-power and mid-power vehicles for NASA SLI and ARC competitions.',
-  },
-  {
-    icon: Wind,
-    label: 'Aerodynamics',
-    text: 'Bio-inspired and AI-designed airfoils tested in wind tunnels and XFOIL.',
-  },
-  {
-    icon: Users,
-    label: 'Leadership',
-    text: 'Cadet Commander, outreach lessons, and technical documentation.',
-  },
-  {
-    icon: GraduationCap,
-    label: 'Academics',
-    text: 'Governor’s Honors Program in Mechanical & Aerospace Engineering.',
-  },
-];
-
-const projects = [
-  {
-    title: 'NASA Student Launch Initiative - Project RANCH',
-    body:
-      'As Payload Team Lead and a key technical contributor on our NASA Student Launch team, I helped engineer a full-scale high-power rocket and payload system under strict NASA requirements. My work included payload architecture, design coordination, testing, and major contributions to the hundreds of pages of technical documentation our team submitted for review.',
-    meta: ['Payload Team Lead', 'Full-scale rocket project', 'NASA-reviewed documentation'],
-  },
-  {
-    title: 'American Rocketry Challenge',
-    body:
-      'As Co-Captain, I led the design, simulation in OpenRocket, and fabrication in Fusion 360 of our competition rocket. We engineered the vehicle to meet strict altitude and flight-time constraints, earning a top national finish and becoming the only team from Georgia to qualify for nationals that year.',
-    meta: ['Co-Captain', 'National finalist', 'OpenRocket & Fusion 360'],
-  },
-  {
-    title: 'UGA Bio-Inspired and AI-Designed Airfoil Research',
-    body:
-      'In a full-time research internship at the University of Georgia, I investigated the aerodynamic performance of bio-inspired and AI-generated airfoils. I used CFD, CAD, Python, and 3D printing to model and test custom profiles in a wind tunnel, and the project later became a gold-medal-winning science fair entry.',
-    meta: ['UGA research internship', 'Wind tunnel testing', 'Science fair gold medal'],
-  },
-  {
-    title: 'Civil Air Patrol - Cadet Commander',
-    body:
-      'As Cadet Commander of my Civil Air Patrol squadron, I lead a roughly 30-cadet corps in weekly training focused on aerospace, leadership, physical fitness, and character. My responsibilities include planning training, mentoring cadets, organizing events, and helping build a stronger and more disciplined squadron culture.',
-    meta: ['Cadet Commander', '~30 cadets', 'Training & mentorship'],
-  },
-  {
-    title: 'Student Council - Secretary',
-    body:
-      'Through Student Council, I contribute to school-wide planning and student leadership efforts while helping represent student ideas in a more formal setting. The role has strengthened my communication, organization, and follow-through, especially when working with both peers and faculty on initiatives that need steady execution.',
-    meta: ['School leadership', 'Organization', 'Communication'],
-  },
-  {
-    title: 'Applied Design for School Programs',
-    body:
-      'I also enjoy using engineering for practical school impact. One example is a modular connector system my team and I designed for elevated stage platforms used by our theatre program. It was a great example of solving a real problem with CAD, iteration, and fabrication while designing for an actual user group.',
-    meta: ['Real client need', 'CAD & fabrication', 'Theatre program project'],
-  },
-  {
-    title: 'STEM Outreach and Teaching',
-    body:
-      'A meaningful part of my work is teaching engineering concepts to younger students through outreach events, demonstrations, and hands-on activities. I enjoy making technical ideas more approachable and helping students see engineering as something creative, practical, and exciting.',
-    meta: ['Hands-on outreach', 'Mentorship', 'STEM communication'],
-  },
-];
-
-const skillGroups = [
-  {
-    title: 'Aerospace & simulation',
-    items: [
-      'OpenRocket for flight dynamics, stability, and performance trade studies',
-      'XFOIL and other CFD tools for airfoil analysis and lift and drag prediction',
-      'Basic exposure to thermodynamics and combustion modeling using Cantera',
-      'Altimeter and flight-data analysis for high-power and competition rockets',
-    ],
-  },
-  {
-    title: 'Design, CAD, and fabrication',
-    items: [
-      'Fusion 360 for airframes, payload bays, fixtures, and 3D-printable components',
-      '3D printing of structural and aerodynamic parts, including reinforced materials',
-      'Iterative prototyping, design-for-manufacturing, and basic finite element analysis',
-      'Practical build experience with composites, recovery systems, payload integration, and test setups',
-    ],
-  },
-  {
-    title: 'Programming & computation',
-    items: [
-      'Proficient in Python for data analysis, simulation scripts, and signal processing',
-      'Proficient in JavaScript and comfortable in modern web stacks, including this portfolio',
-      'Strong working knowledge of LaTeX for technical documentation and reports',
-      'Experience with Git, GitHub, and modern development workflows',
-    ],
-  },
-  {
-    title: 'Leadership, communication, and teaching',
-    items: [
-      'Planning and leading multi-hour meetings and training for Civil Air Patrol cadets',
-      'Designing and teaching STEM outreach lessons for younger students',
-      'Writing large-scale technical documentation for NASA Student Launch',
-      'Coordinating teams through design reviews, test campaigns, deadlines, and public-facing presentations',
-    ],
-  },
-];
-
-const beyondEngineering = [
-  'Outside of engineering, I am active in varsity tennis and student leadership at school. These activities give me a different kind of challenge and help me stay balanced while still developing the same discipline, consistency, and accountability that engineering demands.',
-  'On the court, I have competed in important varsity positions and learned how to stay composed under pressure, adapt quickly, and perform with focus. Through Student Council and outreach work, I have also grown as a communicator and organizer, especially in settings where leadership is less about technical skill and more about people, trust, and follow-through.',
-  'I also value projects that let engineering directly serve my community. Whether that means helping with school programs, mentoring younger students, or designing something useful for a real group of people, I want my work to be both technically strong and genuinely helpful.',
+const MILESTONES = [
+  ['2026', 'BEAMS modular research rocket documented in an AIAA-published project; NAR Level 1 certification remains in progress.'],
+  ['2025', 'Completed the Governor’s Honors Program and helped develop a functioning ERAS2 ionic engine producing 24 g total thrust.'],
+  ['2025', 'Project RANCH completed NASA Student Launch with a measured final apogee of 4,274.8 ft.'],
+  ['2024', 'Conducted UGA airfoil research and presented the resulting work through science-fair and technical-review settings.'],
+  ['2024', 'Co-led an American Rocketry Challenge team to 24th place nationally.'],
+  ['Ongoing', 'Serve as a Civil Air Patrol Cadet Captain and Squadron Commander, leading approximately 30 cadets.'],
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-6xl px-6 pb-24">
-        {/* Intro / hero card */}
-        <motion.section {...sectionMotionProps} className="pt-20">
-          <GlassCard className="bg-gradient-to-br from-white/5 via-black/40 to-accentneongreen/10 p-6 md:p-8">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] lg:items-start">
-              <div className="space-y-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accentneongreen/80">
-                  About
-                </p>
-                <h1 className="text-4xl font-semibold text-white sm:text-5xl">
-                  About Saahil Doshi
-                </h1>
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accentneongreen/80">
-                  High school aerospace engineer-in-training building rockets, airfoils, and teams.
-                </p>
-
-                <motion.div
-                  variants={containerVariants}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.35 }}
-                  className="space-y-4 text-sm leading-relaxed text-primary-foreground/80 md:text-base"
-                >
-                  {introParagraphs.map((paragraph) => (
-                    <motion.p key={paragraph} variants={itemVariants}>
-                      {paragraph}
-                    </motion.p>
-                  ))}
-                </motion.div>
-              </div>
-
-              {/* Snapshot / quick facts */}
-              <div className="space-y-5">
-                <div className="grid gap-3">
-                  {quickFacts.map((fact) => (
-                    <FactPill key={fact.label} label={fact.label} value={fact.value} />
-                  ))}
-                </div>
-
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {highlightRails.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <div
-                        key={item.label}
-                        className="flex h-full flex-col gap-2 rounded-2xl border border-white/5 bg-black/40 p-3"
-                      >
-                        <div className="flex items-center gap-2">
-                          <div className="rounded-lg border border-accentneongreen/40 bg-accentneongreen/10 p-1.5 text-accentneongreen">
-                            <Icon className="h-4 w-4" />
-                          </div>
-                          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-accentneongreen/80">
-                            {item.label}
-                          </p>
-                        </div>
-                        <p className="text-xs text-primary-foreground/75">{item.text}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+    <div>
+      <section className="border-b border-white/10 py-16 sm:py-24">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <p className="eyebrow">About · Class of 2027</p>
+            <h1 className="mt-6 text-5xl font-medium leading-[0.98] tracking-[-0.055em] text-white sm:text-7xl">A student engineer committed to evidence, iteration, and useful systems.</h1>
+            <p className="mt-7 text-lg leading-8 text-primary-foreground/68">
+              I am a senior at Oconee County High School pursuing aerospace and mechanical engineering. My work spans flight-tested rockets, aerodynamic research, electrohydrodynamic propulsion, technical publication, and sustained youth leadership.
+            </p>
+            <p className="mt-5 text-lg leading-8 text-primary-foreground/68">
+              I am most interested in the point where analysis becomes hardware: defining constraints, evaluating a design, building the system, measuring its performance, and documenting what the result actually demonstrates.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Button asChild><Link href="/projects">Inspect projects</Link></Button>
+              <Button asChild variant="outline"><a href="/Saahil-Doshi-Resume.pdf" className="gap-2">Résumé <Download className="h-4 w-4" /></a></Button>
             </div>
-          </GlassCard>
-        </motion.section>
+          </div>
+          <figure className="border border-white/10 bg-surface">
+            <div className="relative aspect-[4/3]">
+              <Image src="/images/uga-airfoil/Cashton&Saahil-With-Award.jpeg" alt="Saahil Doshi and research partner with awards following their aerospace research presentation" fill priority className="object-cover" sizes="(min-width: 1024px) 52vw, 100vw" />
+            </div>
+            <figcaption className="border-t border-white/10 px-5 py-4 font-mono text-xs leading-5 text-primary-foreground/55">Research presentation and recognition · Aero-structural optimization project</figcaption>
+          </figure>
+        </div>
+      </section>
 
-        {/* Focus projects */}
-        <motion.div {...sectionMotionProps}>
-          <Section id="work" title="What I’m working on" kicker="Focus Projects">
-            <p className="text-sm text-primary-foreground/80 md:text-base">
-              A few of the projects and activities that define my current trajectory:
-            </p>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-              className="mt-8 grid gap-6 lg:grid-cols-2"
-            >
-              {projects.map((project) => (
-                <motion.div key={project.title} variants={itemVariants}>
-                  <GlassCard className="h-full p-5 md:p-6">
-                    <div className="flex flex-col gap-3">
-                      <p className="text-sm font-semibold text-white">{project.title}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.meta.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.7rem] uppercase tracking-[0.18em] text-primary-foreground/75"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <p className="text-sm leading-relaxed text-primary-foreground/80">
-                        {project.body}
-                      </p>
-                    </div>
-                  </GlassCard>
-                </motion.div>
+      <section className="border-b border-white/10 py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
+            <div>
+              <p className="eyebrow">How I work</p>
+              <h2 className="mt-5 text-4xl font-medium tracking-[-0.045em] text-white">Technical range supported by project evidence.</h2>
+            </div>
+            <div className="border-t border-white/10">
+              {METHODS.map(([title, detail], index) => (
+                <div key={title} className="grid gap-3 border-b border-white/10 py-5 sm:grid-cols-[2rem_12rem_1fr]">
+                  <span className="font-mono text-xs text-accentneongreen">{String(index + 1).padStart(2, '0')}</span>
+                  <h3 className="font-medium text-white">{title}</h3>
+                  <p className="text-sm leading-6 text-primary-foreground/62">{detail}</p>
+                </div>
               ))}
-            </motion.div>
-          </Section>
-        </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        {/* Skills */}
-        <motion.div {...sectionMotionProps}>
-          <Section id="skills" title="Skills & tools" kicker="Toolbox">
-            <p className="text-sm text-primary-foreground/80 md:text-base">
-              Through these projects and activities, I’ve built a set of technical and leadership skills that I continue to deepen.
-            </p>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-              className="mt-8 grid gap-8 md:grid-cols-2"
-            >
-              {skillGroups.map((group) => (
-                <motion.div key={group.title} variants={itemVariants}>
-                  <GlassCard className="h-full p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accentneongreen/80">
-                      {group.title}
-                    </p>
-                    <ul className="mt-4 space-y-2 text-sm text-primary-foreground/80">
-                      {group.items.map((item) => (
-                        <li key={item} className="flex gap-2">
-                          <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-accentneongreen/70" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </motion.div>
-          </Section>
-        </motion.div>
+      <section className="border-b border-white/10 bg-[#151a1c] py-16 sm:py-24">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <figure className="border border-white/10 bg-primary">
+            <div className="relative aspect-[4/3]"><Image src="/images/nasa-sli/Final-Team-Photo-At-Hunstville-With-FinalPaintedRocket.png" alt="Project RANCH team with its final launch vehicle at NASA Student Launch" fill className="object-cover" sizes="(min-width: 1024px) 55vw, 100vw" /></div>
+            <figcaption className="border-t border-white/10 px-5 py-4 font-mono text-xs text-primary-foreground/55">Project RANCH · NASA Student Launch · Huntsville</figcaption>
+          </figure>
+          <div>
+            <p className="eyebrow">Team responsibility</p>
+            <h2 className="mt-5 text-4xl font-medium leading-tight tracking-[-0.045em] text-white">Personal ownership within larger engineering programs.</h2>
+            <p className="mt-6 leading-7 text-primary-foreground/68">My portfolio distinguishes between team outcomes and my direct contribution. On Project RANCH, I served as Payload Team Lead. In ARC, I served as Co-Captain. In ERAS2, I worked on the engine subteam. In Civil Air Patrol, I hold direct command and instructional responsibility.</p>
+            <p className="mt-5 leading-7 text-primary-foreground/68">That distinction matters: strong engineering is collaborative, but an accurate technical record should still make ownership, interfaces, and decisions clear.</p>
+          </div>
+        </div>
+      </section>
 
-        {/* Beyond engineering */}
-        <motion.div {...sectionMotionProps}>
-          <Section id="beyond" title="Beyond engineering" kicker="Balance">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-              className="grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]"
-            >
-              <motion.div variants={itemVariants}>
-                <GlassCard className="p-6 md:p-7">
-                  <div className="space-y-4 text-sm text-primary-foreground/80 md:text-base">
-                    {beyondEngineering.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
-                    ))}
-                  </div>
-                </GlassCard>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <GlassCard className="space-y-4 p-6 md:p-7">
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accentneongreen/80">
-                    How this shapes me
-                  </p>
-                  <ul className="space-y-2 text-sm text-primary-foreground/80">
-                    <li>
-                      <span className="font-semibold text-white">Varsity Tennis:</span>{' '}
-                      staying composed and consistent in high-pressure singles and doubles situations.
-                    </li>
-                    <li>
-                      <span className="font-semibold text-white">Student Council:</span>{' '}
-                      building communication, organization, and follow-through in a school leadership setting.
-                    </li>
-                    <li>
-                      <span className="font-semibold text-white">Community Design Work:</span>{' '}
-                      applying engineering in practical ways that directly help school programs and real users.
-                    </li>
-                    <li>
-                      <span className="font-semibold text-white">Transferable Skills:</span>{' '}
-                      teaching, calm decision-making, teamwork, and consistency, which are the same skills needed on launch day.
-                    </li>
-                  </ul>
-                </GlassCard>
-              </motion.div>
-            </motion.div>
-          </Section>
-        </motion.div>
-
-        {/* Next steps / CTA */}
-        <motion.div {...sectionMotionProps}>
-          <Section id="looking" title="What I’m looking for" kicker="Next Steps">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.25 }}
-            >
-              <motion.div variants={itemVariants}>
-                <GlassCard className="space-y-6 p-6 md:p-7">
-                  <p className="text-sm text-primary-foreground/80 md:text-base">
-                    I am looking for opportunities to contribute to ambitious aerospace and mechanical engineering
-                    projects, whether through research, design teams, or summer programs. If you are working on
-                    something where a motivated high school engineer with hands-on rocketry, CFD, CAD, and leadership
-                    experience could be useful, I would be excited to connect.
-                  </p>
-                  <div className="flex flex-wrap gap-4">
-                    <Button asChild size="lg" className="rounded-full">
-                      <Link href="/projects">View my projects</Link>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="rounded-full border-accentneongreen/50 text-accentneongreen"
-                    >
-                      <Link href="/contact">Get in touch</Link>
-                    </Button>
-                  </div>
-                </GlassCard>
-              </motion.div>
-            </motion.div>
-          </Section>
-        </motion.div>
-      </div>
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="eyebrow">Selected chronology</p>
+          <div className="mt-8 border-t border-white/10">
+            {MILESTONES.map(([year, detail]) => (
+              <div key={`${year}-${detail}`} className="grid gap-3 border-b border-white/10 py-5 sm:grid-cols-[7rem_1fr]">
+                <p className="font-mono text-sm text-accentneongreen">{year}</p>
+                <p className="max-w-3xl leading-7 text-primary-foreground/68">{detail}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-wrap items-center gap-5">
+            <Link href="/contact" className="inline-flex items-center gap-2 text-sm text-accentneongreen hover:text-white">Contact me <ArrowUpRight className="h-4 w-4" /></Link>
+            <Link href="/projects/civil-air-patrol" className="inline-flex items-center gap-2 text-sm text-primary-foreground/65 hover:text-white">Leadership record <ArrowUpRight className="h-4 w-4" /></Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

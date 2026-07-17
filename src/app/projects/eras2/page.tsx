@@ -12,8 +12,8 @@ import { FigureCard } from '@/components/layout/FigureCard';
 import { Button } from '@/components/ui/button';
 
 const HERO_STATS = [
-  { label: 'Program Length', value: '4 weeks · GHP Mechanical & Aerospace Engineering' },
-  { label: 'Propulsion', value: 'Electrohydrodynamic (ionic wind) engine' },
+  { label: 'Program Intensity', value: '4 weeks · ~65 hours/week' },
+  { label: 'Measured Output', value: '24 g total thrust' },
   { label: 'My Role', value: 'Engine subteam · Airfoil analysis · CAD integration' },
 ];
 
@@ -36,16 +36,16 @@ const DESIGN_ITERATIONS = [
 ];
 
 const MEDIA = [
-  { src: '', caption: 'Modular ionic engine units with acrylic brackets and sheet-metal electrodes.' },
-  { src: '', caption: 'WASP-derived airfoil with rectangular V3 wing and engine hardpoints.' },
-  { src: '', caption: 'Test stand and instrumentation concepts for thrust and velocity logging.' },
+  { src: '/images/eras2-engine.svg', caption: 'Modular ionic engine units with acrylic brackets and sheet-metal electrodes.' },
+  { src: '/images/eras2-airframe.svg', caption: 'WASP-derived airfoil with rectangular V3 wing and engine hardpoints.' },
+  { src: '/images/eras2-hero.svg', caption: 'Integrated ERAS2 airframe and propulsion configuration.' },
 ];
 
 export default function Eras2ProjectPage() {
   return (
     <div className="min-h-screen bg-primary text-primary-foreground">
       <AnimatedHero
-        image="/images/eras2-hero.svg"
+        image="/images/eras2-engine.svg"
         badge="Georgia Governor’s Honors Program · 2025 · Mechanical & Aerospace Engineering"
         title="ERAS2 — Electrohydrodynamic Remote Aircraft System"
         subtitle="A GHP capstone project to design, build, and test an ionic-wind–powered aircraft, combining electrohydrodynamic propulsion with a lightweight, student-designed airframe."
@@ -83,10 +83,10 @@ export default function Eras2ProjectPage() {
         <Section id="overview" title="Project Overview" kicker="Overview">
           <AnimatedSection className="space-y-6">
             <p>
-              ERAS2 (Electrohydrodynamic Remote Aircraft System 2) was the capstone project for the Mechanical & Aerospace Engineering major at the Georgia Governor’s Honors Program. Over four weeks, our cohort designed and built a flight vehicle powered by an ionic wind engine—an electrohydrodynamic propulsion system that accelerates air using high-voltage electric fields instead of moving parts. We used the JIRA ticket system to manage our design iterations, test plans, and nonconformance reports.
+              ERAS2 (Electrohydrodynamic Remote Aircraft System 2) was the capstone project for the Mechanical & Aerospace Engineering major at the Georgia Governor’s Honors Program. Across a four-week residential program averaging approximately 65 hours per week, our cohort designed and built a flight vehicle powered by an ionic wind engine—an electrohydrodynamic propulsion system that accelerates air using high-voltage electric fields instead of moving parts. We used Jira to manage design iterations, test plans, and nonconformance reports.
             </p>
             <p>
-              I served on the <strong>Engine subteam</strong>, focusing on the iterative design, testing, and integration of the ionic thruster, while also supporting the <strong>airfoil selection and analysis</strong> for the wing. Working alongside the Flight and Electronics teams, we had to balance thrust, mass, structural strength, and stability to get a realistic, flyable configuration under tight time constraints.
+              I served on the <strong>Engine subteam</strong>, focusing on iterative design, testing, and integration of the ionic thruster while also supporting <strong>airfoil selection and analysis</strong> for the wing. The final functioning engine produced approximately <strong>24 g of total measured thrust</strong>. Working alongside the Flight and Electronics teams, we balanced thrust, mass, structural strength, and stability under a compressed schedule.
             </p>
           </AnimatedSection>
         </Section>
@@ -203,7 +203,7 @@ export default function Eras2ProjectPage() {
               ERAS2 was my first experience designing a propulsion system where the engine and the airframe were this tightly coupled. As an Engine subteam member, I learned that it wasn’t enough to maximize thrust in isolation—we had to hit mass budgets, attach to real structures, and survive crashes and non-ideal launches.
             </p>
             <p>
-              The project forced me to think like a systems engineer: translate test data into design decisions, coordinate CAD changes with the Flight team, and document failures as nonconformance tickets so the next iteration could be better. It also let me connect my previous airfoil and CFD experience with a completely different kind of propulsion. ERAS2 made clear how much I enjoy bridging detailed experimental work, CAD modeling, and big-picture design.
+              The project forced me to think like a systems engineer: translate test data into design decisions, coordinate CAD changes with the Flight team, and document failures as nonconformance tickets so the next iteration could be better. It also let me connect my previous airfoil-analysis experience with a completely different kind of propulsion. ERAS2 made clear how much I enjoy bridging detailed experimental work, CAD modeling, and big-picture design.
             </p>
           </AnimatedSection>
         </Section>

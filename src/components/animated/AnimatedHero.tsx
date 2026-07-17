@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { Image } from '@/components/ui/image';
 import { cn } from '@/lib/utils';
@@ -16,34 +16,27 @@ type AnimatedHeroProps = {
 };
 
 export function AnimatedHero({ image, badge, title, subtitle, actions, className }: AnimatedHeroProps) {
-  const { scrollY } = useScroll();
-  const parallaxY = useTransform(scrollY, (value) => value * 0.15);
-
   return (
-    <section className={cn('relative isolate overflow-hidden', className)}>
-      <motion.div className="absolute inset-0" style={{ y: parallaxY }}>
-        <Image src={image} alt={title} fill className="object-cover" priority sizes="100vw" />
-      </motion.div>
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-black/80 via-primary/80 to-primary"
-        initial={{ opacity: 0.6 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      />
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-8 px-6 py-24 sm:py-28">
+    <section className={cn('relative isolate min-h-[34rem] overflow-hidden border-b border-white/10', className)}>
+      <div className="absolute inset-0">
+        <Image src={image} alt="" fill className="object-cover" priority sizes="100vw" />
+      </div>
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,20,22,0.98)_0%,rgba(16,20,22,0.9)_45%,rgba(16,20,22,0.35)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/20" />
+      <div className="relative mx-auto flex min-h-[34rem] max-w-6xl flex-col justify-end gap-8 px-6 py-16 sm:py-20">
         <motion.div
-          className="max-w-3xl space-y-4"
+          className="max-w-4xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           {badge ? (
-            <span className="inline-flex items-center rounded-full border border-accentneongreen/30 bg-accentneongreen/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accentneongreen">
+            <span className="eyebrow inline-flex border-l border-accentneongreen pl-3">
               {badge}
             </span>
           ) : null}
-          <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl">{title}</h1>
-          <p className="text-lg leading-relaxed text-primary-foreground/80">{subtitle}</p>
+          <h1 className="mt-6 text-4xl font-medium leading-[1.02] tracking-[-0.05em] text-white sm:text-6xl md:text-7xl">{title}</h1>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-primary-foreground/70">{subtitle}</p>
         </motion.div>
         {actions ? (
           <motion.div

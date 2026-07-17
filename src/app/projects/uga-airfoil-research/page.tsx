@@ -17,7 +17,7 @@ const IMAGE_BASE_PATH = '/images/uga-airfoil';
 
 const HERO_STATS = [
   { label: 'Duration', value: '8 weeks · 8 hours/day' },
-  { label: 'Methods', value: 'XFOIL CFD · Fusion 360 · Wind tunnel' },
+  { label: 'Methods', value: 'XFOIL analysis · Fusion 360 · Wind tunnel' },
   { label: 'Outcome', value: 'Regional gold medal · State finalist' },
 ];
 
@@ -30,7 +30,7 @@ const QUICK_HIGHLIGHTS = [
   {
     icon: Cpu,
     label: 'Toolchain',
-    text: 'XFOIL for CFD, Fusion 360 for CAD, and 3D-printed prototypes in a closed loop.',
+    text: 'XFOIL viscous/inviscid analysis, Fusion 360 CAD, and 3D-printed prototypes in a closed loop.',
   },
   {
     icon: Wind,
@@ -224,7 +224,7 @@ export default function UgaAirfoilResearchPage() {
   return (
     <div className="min-h-screen bg-primary text-primary-foreground">
       <AnimatedHero
-        image="/images/uga-airfoil/Airfoil-Hero.svg"
+        image="/images/uga-airfoil/Cashton&Saahil-Presenting.jpeg"
         badge="UGA Airfoil Research · Summer Internship & Science Fair"
         title="Bio-Inspired and AI-Designed Airfoils — UGA Research & Science Fair"
         subtitle="Under the mentorship of Dr. Ramana Pidaparti at the University of Georgia, I conducted an 8-week research project comparing the aerodynamic performance of bio-inspired, generative AI-designed, and control airfoils using XFOIL simulations, Fusion 360 modeling, 3D printing, and wind tunnel testing."
@@ -323,7 +323,7 @@ export default function UgaAirfoilResearchPage() {
                     lift-to-drag ratio.
                   </p>
                   <p>
-                    To do this, I used XFOIL (Created by MIT) for computational fluid dynamics (CFD)
+                    To do this, I used MIT&apos;s XFOIL viscous/inviscid panel-method solver
                     simulations, modeled candidate geometries in Fusion 360, and fabricated physical
                     prototypes via 3D printing. These airfoils were then tested in a wind tunnel using a
                     custom-built test rig to validate and calibrate the simulation results. The project
@@ -354,7 +354,7 @@ export default function UgaAirfoilResearchPage() {
                     Skills strengthened
                   </p>
                   <ul className="space-y-2 text-sm text-primary-foreground/80">
-                    <li>CFD interpretation and XFOIL workflow.</li>
+                    <li>Aerodynamic interpretation and XFOIL workflow.</li>
                     <li>Parametric CAD and design-for-manufacture.</li>
                     <li>Wind-tunnel test planning and calibration.</li>
                     <li>Data visualization and science communication.</li>
@@ -441,7 +441,7 @@ export default function UgaAirfoilResearchPage() {
         {/* Methods */}
         <Section
           id="methods"
-          title="CFD, CAD, and Generative Design Workflow"
+          title="Aerodynamic Analysis, CAD, and Generative Design Workflow"
           kicker="Methodology"
         >
           <AnimatedSection className="space-y-10">
@@ -459,7 +459,7 @@ export default function UgaAirfoilResearchPage() {
                   and manufacturability.
                 </li>
                 <li>
-                  <strong className="text-white">CFD via XFOIL:</strong> Each airfoil was analyzed in XFOIL to
+                  <strong className="text-white">XFOIL analysis:</strong> Each airfoil was analyzed to
                   estimate lift coefficient, drag coefficient, and lift-to-drag ratio across a range of
                   angles of attack and Reynolds numbers representative of the wind tunnel test conditions.
                 </li>
@@ -758,13 +758,13 @@ export default function UgaAirfoilResearchPage() {
                 </li>
                 <li>
                   <strong className="text-white">Design workflows:</strong> Combining bio-inspired
-                  intuition, generative AI, and traditional CFD tools offers a template for future
+                  intuition, generative AI, and established aerodynamic-analysis tools offers a template for future
                   engineering workflows that can rapidly explore large design spaces while still grounding
                   decisions in physical testing.
                 </li>
               </ul>
               <p>
-                On a personal level, this project strengthened my understanding of aerodynamics, CFD,
+                On a personal level, this project strengthened my understanding of aerodynamics, computational analysis,
                 and experimental methods, and showed me how research can move from concept to prototype to
                 validated data.
               </p>
@@ -791,7 +791,7 @@ export default function UgaAirfoilResearchPage() {
                 I adapted the project into a science fair entry that advanced through the regional level
                 with a <strong className="text-white">gold medal</strong> and continued on to the state
                 competition. In preparing for judging, I created detailed posters, data visualizations,
-                and explanations that distilled CFD concepts and wind tunnel methodology into an
+                and explanations that distilled aerodynamic-analysis concepts and wind tunnel methodology into an
                 accessible narrative for a broad audience.
               </p>
               <p>

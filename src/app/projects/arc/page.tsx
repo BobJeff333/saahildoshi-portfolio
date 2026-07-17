@@ -117,7 +117,7 @@ export default function ArcProjectPage() {
     <div className="min-h-screen bg-primary text-primary-foreground">
       {/* HERO HEADER */}
       <AnimatedHero
-        image="/images/arc-hero.svg"
+        image="/images/arc/Capitol-Hill-Rocket-Team-Picture-350x260.png"
         badge="American Rocketry Challenge · National Finalist"
         title="American Rocketry Challenge — National Finalist Co-Captain"
         subtitle="Mid-power competition rocket engineered for an 820 ft apogee, 43–46 second flight time window, and 605 g mass limit while carrying a fragile egg payload."
@@ -152,7 +152,7 @@ export default function ArcProjectPage() {
             <p>
               Using OpenRocket for simulation and Fusion 360 for CAD, we developed a BT-80 vehicle with a nylon–carbon fiber nose cone,
               reinforced tail cone, and Delrin fin interfaces. Our qualifying score of 9 was among the lowest nationwide, placing us 24th out
-              of ~1,000 teams and making us the only team from Georgia to reach the national finals.
+              nationally and making us the only team from Georgia to reach the national finals.
             </p>
           </AnimatedSection>
         </Section>
@@ -161,7 +161,7 @@ export default function ArcProjectPage() {
         <Section id="specs" title="Mission Specifications & Constraints" kicker="ARC 2024 Ruleset">
           <AnimatedSection>
             <p className="mb-8">
-              ARC's strict scoring window forces careful balancing of altitude, mass, drag, and descent rate. Each constraint directly shapes
+              ARC&apos;s strict scoring window forces careful balancing of altitude, mass, drag, and descent rate. Each constraint directly shapes
               the aerodynamic and structural design of the vehicle.
             </p>
 

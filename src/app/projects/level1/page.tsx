@@ -10,14 +10,14 @@ export default function LevelOneFleetPage() {
     <div className="space-y-12 pb-24">
       <section
         className="relative isolate overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/level1/level1-hero.svg')" }}
+        style={{ backgroundImage: "url('/images/level1/IMG_6786.jpeg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-primary/80 to-primary" />
 
         <div className="relative mx-auto grid max-w-6xl gap-8 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <span className="inline-flex items-center rounded-full border border-accentneongreen/30 bg-accentneongreen/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-accentneongreen">
-              Published AIAA Project
+              Published AIAA Project · NAR Level 1 In Progress
             </span>
 
             <h1 className="mt-6 text-4xl font-bold text-white sm:text-5xl">

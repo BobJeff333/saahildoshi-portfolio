@@ -22,7 +22,7 @@ import { StatCard } from '@/components/layout/StatCard';
 import { FigureCard } from '@/components/layout/FigureCard';
 import { Button } from '@/components/ui/button';
 
-const HERO_IMAGE = '/images/civil-air-patrol/cap-hero.jpg';
+const HERO_IMAGE = '/images/cap/CAP.svg';
 
 // -------------------- DATA --------------------
 
