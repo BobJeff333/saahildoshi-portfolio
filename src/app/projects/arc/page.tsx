@@ -151,7 +151,7 @@ export default function ArcProjectPage() {
               This year, I am extending the ARC work by designing and manufacturing an active airbrake system. The objective is to reduce sensitivity to motor impulse variation, flight mass, atmospheric conditions, and small assembly differences so the vehicle can approach the target altitude with a smaller and more repeatable error.
             </p>
             <p>
-              The current design uses a compact servo-driven mechanism to deploy four drag panels around the airframe. Controlled deployment adds an adjustable source of aerodynamic drag during ascent, creating a way to correct a predicted overshoot instead of relying entirely on passive configuration changes made before launch.
+              The current design uses a compact servo-driven mechanism to deploy three drag panels around the airframe. Controlled deployment adds an adjustable source of aerodynamic drag during ascent, creating a way to correct a predicted overshoot instead of relying entirely on passive configuration changes made before launch.
             </p>
             <div className="border-l border-accentneongreen py-2 pl-5">
               <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-primary-foreground/50">Current status</p>
