@@ -142,6 +142,47 @@ export default function ArcProjectPage() {
             fit="cover"
           />
         </div>
+      </Section>
+
+      <Section id="airbrake" title="Current development: reducing the final altitude uncertainty" kicker="2026 airbrake system">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr,1.2fr] lg:items-start">
+          <div className="space-y-5">
+            <p>
+              This year, I am extending the ARC work by designing and manufacturing an active airbrake system. The objective is to reduce sensitivity to motor impulse variation, flight mass, atmospheric conditions, and small assembly differences so the vehicle can approach the target altitude with a smaller and more repeatable error.
+            </p>
+            <p>
+              The current design uses a compact servo-driven mechanism to deploy four drag panels around the airframe. Controlled deployment adds an adjustable source of aerodynamic drag during ascent, creating a way to correct a predicted overshoot instead of relying entirely on passive configuration changes made before launch.
+            </p>
+            <div className="border-l border-accentneongreen py-2 pl-5">
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-primary-foreground/50">Current status</p>
+              <p className="mt-2 text-lg font-medium text-white">Mechanical design and manufacturing in progress</p>
+            </div>
+          </div>
+          <FigureCard
+            src="/images/arc/Airbrake-Design-ARC.png"
+            caption="Current airbrake CAD showing the central servo, synchronized linkage arms, and four deployable drag panels."
+          />
+        </div>
+
+        <DecisionGrid
+          items={[
+            {
+              label: 'Control objective',
+              title: 'Drive altitude error toward zero',
+              detail: 'The airbrake is intended to trim excess predicted apogee while preserving a stable ascent and the rest of the competition vehicle’s flight requirements.',
+            },
+            {
+              label: 'Mechanical focus',
+              title: 'Deploy four panels repeatably',
+              detail: 'The mechanism must package inside the airframe, move each panel consistently, limit backlash, and tolerate aerodynamic loading without binding.',
+            },
+            {
+              label: 'Verification focus',
+              title: 'Connect deployment to measured drag',
+              detail: 'Ground testing and flight data will be used to characterize deployment behavior, refine the drag model, and determine how much correction the system can reliably provide.',
+            },
+          ]}
+        />
         <ProjectActions primary={{ href: '/projects/nasa-sli', label: 'Continue to NASA SLI' }} />
       </Section>
     </main>
