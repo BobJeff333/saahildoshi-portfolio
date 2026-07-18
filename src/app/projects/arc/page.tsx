@@ -160,7 +160,7 @@ export default function ArcProjectPage() {
           </div>
           <FigureCard
             src="/images/arc/Airbrake-Design-ARC.png"
-            caption="Current airbrake CAD showing the central servo, synchronized linkage arms, and four deployable drag panels."
+            caption="Current airbrake CAD showing the central servo, synchronized linkage arms, and three deployable drag panels."
           />
         </div>
 
@@ -173,7 +173,7 @@ export default function ArcProjectPage() {
             },
             {
               label: 'Mechanical focus',
-              title: 'Deploy four panels repeatably',
+              title: 'Deploy three panels repeatably',
               detail: 'The mechanism must package inside the airframe, move each panel consistently, limit backlash, and tolerate aerodynamic loading without binding.',
             },
             {

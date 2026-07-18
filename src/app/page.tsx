@@ -81,7 +81,7 @@ export default function HomePage() {
       <section className="relative border-b border-white/10">
         <div className="mx-auto grid min-h-[calc(100svh-72px)] max-w-6xl gap-10 px-6 py-12 lg:grid-cols-[0.93fr_1.07fr] lg:items-center lg:py-16">
           <AnimatedSection className="relative z-10 max-w-2xl">
-            <p className="eyebrow">Senior · Class of 2027 · Aerospace Engineering</p>
+            <p className="eyebrow">Class of 2027 · Aerospace Engineering</p>
             <h1 className="mt-7 text-[clamp(3rem,7vw,6.2rem)] font-medium leading-[0.91] tracking-[-0.065em] text-white">
               Engineering systems from analysis to flight.
             </h1>

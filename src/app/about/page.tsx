@@ -17,7 +17,7 @@ const MILESTONES = [
   ['2026', 'BEAMS modular research rocket documented in an AIAA-published project; NAR Level 1 certification remains in progress.'],
   ['2025', 'Completed the Governor’s Honors Program and helped develop a functioning ERAS2 ionic engine producing 24 g total thrust.'],
   ['2025', 'Project RANCH completed NASA Student Launch with a measured final apogee of 4,274.8 ft.'],
-  ['2024', 'Conducted UGA airfoil research and presented the resulting work through science-fair and technical-review settings.'],
+  ['2024-2026', 'Conducted UGA airfoil research and presented the resulting work through science-fair and technical-review settings. Recognized at the AIAA Region II Conference as 1st Place in the High School Category.'],
   ['2024', 'Co-led an American Rocketry Challenge team to 24th place nationally.'],
   ['Ongoing', 'Serve as a Civil Air Patrol Cadet Captain and Squadron Commander, leading approximately 30 cadets.'],
 ];
@@ -31,7 +31,7 @@ export default function AboutPage() {
             <p className="eyebrow">About · Class of 2027</p>
             <h1 className="mt-6 text-5xl font-medium leading-[0.98] tracking-[-0.055em] text-white sm:text-7xl">A student engineer committed to evidence, iteration, and useful systems.</h1>
             <p className="mt-7 text-lg leading-8 text-primary-foreground/68">
-              I am a senior at Oconee County High School pursuing aerospace and mechanical engineering. My work spans flight-tested rockets, aerodynamic research, electrohydrodynamic propulsion, technical publication, and sustained youth leadership.
+              I am a senior at Oconee County High School pursuing aerospace engineering. My work spans flight-tested rockets, aerodynamic research, electrohydrodynamic propulsion, technical publication, and sustained youth leadership.
             </p>
             <p className="mt-5 text-lg leading-8 text-primary-foreground/68">
               I am most interested in the point where analysis becomes hardware: defining constraints, evaluating a design, building the system, measuring its performance, and documenting what the result actually demonstrates.
@@ -43,7 +43,7 @@ export default function AboutPage() {
           </div>
           <figure className="border border-white/10 bg-surface">
             <div className="relative aspect-[4/3]">
-              <Image src="/images/uga-airfoil/Cashton&Saahil-With-Award.jpeg" alt="Saahil Doshi and Cashton with their AIAA Region II Conference first-place awards" fill priority className="object-cover" sizes="(min-width: 1024px) 52vw, 100vw" />
+              <Image src="/images/uga-airfoil/Cashton&Saahil-With-Award.jpeg" alt="Saahil Doshi and research partner with awards following their aerospace research presentation" fill priority className="object-cover" sizes="(min-width: 1024px) 52vw, 100vw" />
             </div>
             <figcaption className="border-t border-white/10 px-5 py-4 font-mono text-xs leading-5 text-primary-foreground/55">Research presentation and recognition · Aero-structural optimization project</figcaption>
           </figure>
