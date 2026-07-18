@@ -21,8 +21,8 @@ export default function NasaSliPage() {
     <main className="min-h-screen bg-primary text-primary-foreground">
       <AnimatedHero
         image="/images/nasa-sli/Onsite-Setup-Photo.png"
-        badge="NASA Student Launch Initiative · 2024–2025"
-        title="Project RANCH — a full-scale launch vehicle built around verifiable interfaces"
+        badge="NASA Student Launch Initiative · 2024 - 2025"
+        title="Project RANCH - a full-scale launch vehicle built around verifiable interfaces"
         subtitle="A 92-inch fiberglass rocket with redundant dual deployment, K-class propulsion, and the ACORN data-return payload; the final flight reached 4,274.8 feet."
       />
       <ProjectStats items={stats} />
@@ -65,7 +65,7 @@ export default function NasaSliPage() {
           items={[
             { label: 'Airframe', value: '92 in long, 4 in diameter; roll-wrapped fiberglass body tubes and matching fiberglass couplers in the final configuration.' },
             { label: 'Propulsion', value: 'AeroTech K1100T reload in a 54 mm motor mount with an aluminum thrust structure and serviceable fin-can architecture.' },
-            { label: 'Stability', value: 'OpenRocket verification maintained approximately 1.6–2.0 calibers through motor burn.' },
+            { label: 'Stability', value: 'OpenRocket verification maintained approximately 1.6 - 2.0 calibers through motor burn.' },
             { label: 'Recovery', value: '18 in drogue at apogee and 48 in main near 650 ft AGL, with shear pins and redundant deployment events.' },
             { label: 'Avionics', value: 'Dual RRC3+ altimeters with independent power and charges, plus Featherweight GPS telemetry.' },
             { label: 'Payload', value: 'ACORN combined STEMnaut carriage, GPS data return, maximum-velocity/apogee/landing-time logging, and a 360° camera mount.' },

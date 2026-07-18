@@ -150,7 +150,7 @@ export default function HomePage() {
                 {[
                   ['Role', 'Payload Team Lead'],
                   ['Result', '4,274.8 ft final apogee'],
-                  ['Stability', '1.6–2.0 calibers'],
+                  ['Stability', '1.6 - 2.0 calibers'],
                   ['Validation', 'Two full-scale test flights'],
                 ].map(([term, detail]) => (
                   <div key={term} className="grid grid-cols-[7rem_1fr] border-t border-white/10 py-3 first:border-t-0">

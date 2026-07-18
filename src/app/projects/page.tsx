@@ -20,10 +20,10 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     number: '01',
-    title: 'NASA Student Launch Initiative — Project RANCH',
+    title: 'NASA Student Launch Initiative - Project RANCH',
     href: '/projects/nasa-sli',
     summary: 'A 92-inch fiberglass launch vehicle integrating redundant dual-deployment recovery, modular avionics, and the ACORN data-return payload.',
-    timeline: '2024–2025',
+    timeline: '2024 - 2025',
     discipline: 'Launch systems',
     role: 'Payload Team Lead',
     result: '4,274.8 ft final apogee',
@@ -38,7 +38,7 @@ const PROJECTS: Project[] = [
     timeline: 'Summer 2024',
     discipline: 'Aerodynamics research',
     role: 'Research intern',
-    result: 'Regional gold medal',
+    result: 'AIAA Region II first place',
     image: '/images/uga-airfoil/Cashton&Saahil-Presenting.jpeg',
     tier: 'selected',
   },
@@ -47,7 +47,7 @@ const PROJECTS: Project[] = [
     title: 'American Rocketry Challenge',
     href: '/projects/arc',
     summary: 'A competition launch vehicle optimized for a constrained altitude and flight-time mission through repeated simulation, fabrication, and flight testing.',
-    timeline: '2023–2024',
+    timeline: '2023 - 2024',
     discipline: 'Flight optimization',
     role: 'Co-Captain',
     result: '24th nationally',
@@ -92,7 +92,7 @@ const PROJECTS: Project[] = [
   },
   {
     number: '07',
-    title: 'Governor’s Honors Program — Mechanical & Aerospace',
+    title: 'Governor’s Honors Program - Mechanical & Aerospace',
     href: '/projects/ghp-mechanical-aero',
     summary: 'A four-week residential program combining calculus-based physics, thermodynamics, signal processing, and sustained applied engineering work.',
     timeline: '2025',
@@ -146,7 +146,7 @@ export default function ProjectsPage() {
     <div>
       <header className="border-b border-white/10 py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-6">
-          <p className="eyebrow">Project index · 2023–present</p>
+          <p className="eyebrow">Project index · 2023 - present</p>
           <h1 className="mt-6 max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.055em] text-white sm:text-7xl">Engineering work documented from requirement to result.</h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/65">Selected launch systems, aerodynamic research, experimental propulsion, and leadership programs. Each case study separates personal responsibility from team outcomes and links supporting evidence where available.</p>
         </div>

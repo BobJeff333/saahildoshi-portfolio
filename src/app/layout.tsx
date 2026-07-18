@@ -15,20 +15,20 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://saahildoshi-portfolio.vercel.app'),
   title: {
-    default: 'Saahil Doshi — Aerospace Engineering Portfolio',
-    template: '%s — Saahil Doshi',
+    default: 'Saahil Doshi - Aerospace Engineering Portfolio',
+    template: '%s - Saahil Doshi',
   },
   description:
     'Aerospace engineering portfolio documenting flight-tested launch vehicles, aerodynamic research, experimental propulsion, and technical leadership.',
   openGraph: {
-    title: 'Saahil Doshi — Aerospace Engineering Portfolio',
+    title: 'Saahil Doshi - Aerospace Engineering Portfolio',
     description: 'Analysis, flight, research, and technical leadership documented from requirement to result.',
     type: 'website',
     images: [{ url: '/og.jpg', width: 1731, height: 909, alt: 'Saahil Doshi Aerospace Engineering Portfolio' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Saahil Doshi — Aerospace Engineering Portfolio',
+    title: 'Saahil Doshi - Aerospace Engineering Portfolio',
     description: 'Analysis, flight, research, and technical leadership documented from requirement to result.',
     images: ['/og.jpg'],
   },

@@ -43,7 +43,7 @@ export default function AboutPage() {
           </div>
           <figure className="border border-white/10 bg-surface">
             <div className="relative aspect-[4/3]">
-              <Image src="/images/uga-airfoil/Cashton&Saahil-With-Award.jpeg" alt="Saahil Doshi and research partner with awards following their aerospace research presentation" fill priority className="object-cover" sizes="(min-width: 1024px) 52vw, 100vw" />
+              <Image src="/images/uga-airfoil/Cashton&Saahil-With-Award.jpeg" alt="Saahil Doshi and Cashton with their AIAA Region II Conference first-place awards" fill priority className="object-cover" sizes="(min-width: 1024px) 52vw, 100vw" />
             </div>
             <figcaption className="border-t border-white/10 px-5 py-4 font-mono text-xs leading-5 text-primary-foreground/55">Research presentation and recognition · Aero-structural optimization project</figcaption>
           </figure>

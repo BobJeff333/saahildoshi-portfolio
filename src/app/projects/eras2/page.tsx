@@ -22,7 +22,7 @@ export default function Eras2ProjectPage() {
       <AnimatedHero
         image="/images/eras2/Plane-In-Workshop.jpeg"
         badge="Georgia Governor’s Honors Program · 2025"
-        title="ERAS2 — electroaerodynamic aircraft"
+        title="ERAS2 - electroaerodynamic aircraft"
         subtitle="A four-week systems-engineering sprint to design, fabricate, test, and integrate an ionic-wind propulsion system into a flight-capable airframe."
       />
       <ProjectStats items={stats} />

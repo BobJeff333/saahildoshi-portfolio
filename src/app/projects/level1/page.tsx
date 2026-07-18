@@ -22,7 +22,7 @@ export default function LevelOneFleetPage() {
       <AnimatedHero
         image="/images/level1/IMG_6786.jpeg"
         badge="Published AIAA project · NAR Level 1 in progress"
-        title="BEAMS — a biological payload inside a modular launch platform"
+        title="BEAMS - a biological payload inside a modular launch platform"
         subtitle="A mission-specific rocket configuration studying how high-power flight stresses affect bean samples, developed within a reusable segmented-airframe research program."
       />
       <ProjectStats items={stats} />

@@ -23,7 +23,7 @@ export default function ArcProjectPage() {
         image="/images/arc/Capitol-Hill-Rocket-Team-Picture-350x260.png"
         badge="American Rocketry Challenge · 2024"
         title="Engineering repeatability into a precision flight mission"
-        subtitle="A 605 g competition rocket optimized for an 820 ft apogee, a 43–46 second flight, and the safe recovery of a raw egg payload."
+        subtitle="A 605 g competition rocket optimized for an 820 ft apogee, a 43 - 46 second flight, and the safe recovery of a raw egg payload."
       />
       <ProjectStats items={stats} />
 
@@ -64,7 +64,7 @@ export default function ArcProjectPage() {
         <TechnicalList
           items={[
             { label: 'Target apogee', value: '820 ft under the 2024 ruleset.' },
-            { label: 'Flight duration', value: '43–46 seconds from launch to landing.' },
+            { label: 'Flight duration', value: '43 - 46 seconds from launch to landing.' },
             { label: 'Mass', value: '605 g flight-ready with egg payload, below the 650 g maximum.' },
             { label: 'Propulsion', value: 'AeroTech F32-6T motor.' },
             { label: 'Recovery', value: '24 in parachute and Kevlar shock cord in a single-deployment architecture.' },

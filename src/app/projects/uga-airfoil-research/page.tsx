@@ -15,7 +15,7 @@ const base = '/images/uga-airfoil';
 const stats = [
   { label: 'Research duration', value: '8 weeks · 8 hr/day' },
   { label: 'Best measured efficiency', value: 'L/D ≈ 61.5' },
-  { label: 'Recognition', value: 'Regional gold · State finalist' },
+  { label: 'Recognition', value: 'AIAA Region II · First Place' },
 ];
 
 export default function UgaAirfoilResearchPage() {
@@ -44,8 +44,8 @@ export default function UgaAirfoilResearchPage() {
             },
             {
               label: 'Outcome',
-              title: 'A validated comparative study',
-              detail: 'The peregrine-inspired section reached the highest lift-to-drag ratio; the work earned regional gold and advanced to state competition.',
+              title: 'Awarded research and a conference paper',
+              detail: 'The science-fair study earned regional gold and advanced to state competition; our AIAA paper won Region II Conference High School Category First Place.',
             },
           ]}
         />
@@ -142,15 +142,15 @@ export default function UgaAirfoilResearchPage() {
         <div className="grid gap-10 lg:grid-cols-[0.8fr,1.2fr] lg:items-start">
           <div className="space-y-5">
             <p>
-              I translated the research into a regional science-fair presentation with a physical interchangeable-wing demonstrator, plots, methods, and a clear account of experimental limitations. The project earned a gold medal and advanced to the state competition.
+              I first translated the research into a regional science-fair presentation with a physical interchangeable-wing demonstrator, plots, methods, and a clear account of experimental limitations. That presentation earned a regional gold medal and advanced to the state competition; the original science-fair board remains available below as supporting evidence.
             </p>
             <p>
-              Presenting the work reinforced a central research skill: technical depth only becomes useful when the assumptions, evidence, and uncertainty can be explained clearly to different audiences.
+              Cashton and I later presented the paper at the AIAA Region II Student Conference, where it received <strong className="text-white">High School Category First Place</strong>. Presenting the work in both settings reinforced a central research skill: technical depth only becomes useful when the assumptions, evidence, and uncertainty can be explained clearly to different audiences.
             </p>
           </div>
           <FigureCard
             src={`${base}/Cashton&Saahil-With-Award.jpeg`}
-            caption="Regional recognition after presenting the completed comparative airfoil study."
+            caption="Cashton and me with our AIAA Region II Conference High School Category First Place awards."
             fit="cover"
           />
         </div>
@@ -159,7 +159,10 @@ export default function UgaAirfoilResearchPage() {
           caption="Interchangeable-wing aircraft used to make the geometry comparison tangible during presentation and outreach."
           wide
         />
-        <ProjectActions primary={{ href: '/Wing-Performance-Characteristics-Science-Fair.png', label: 'Open research poster' }} />
+        <ProjectActions
+          primary={{ href: 'https://doi.org/10.2514/6.2026-111476', label: 'Read the AIAA paper', external: true }}
+          secondary={{ href: '/Wing-Performance-Characteristics-Science-Fair.png', label: 'Open science-fair board' }}
+        />
       </Section>
     </main>
   );
