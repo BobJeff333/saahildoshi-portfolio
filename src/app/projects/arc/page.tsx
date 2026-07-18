@@ -1,298 +1,190 @@
-'use client';
-
-import Link from 'next/link';
-import NextImage from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-
 import AnimatedHero from '@/components/animated/AnimatedHero';
-import { AnimatedSection } from '@/components/animated/AnimatedSection';
+import {
+  DecisionGrid,
+  ProjectActions,
+  ProjectBrief,
+  ProjectStats,
+  PullQuote,
+  TechnicalList,
+} from '@/components/layout/CaseStudy';
+import { FigureCard } from '@/components/layout/FigureCard';
 import { Section } from '@/components/layout/Section';
-import { StatCard } from '@/components/layout/StatCard';
-import { Button } from '@/components/ui/button';
 
-// -----------------------------
-// Shared NASA-style MediaCard
-// -----------------------------
-type MediaItem = {
-  src: string;
-  caption: string;
-  orientation?: 'portrait' | 'landscape';
-  ratio?: string;
-};
-
-function MediaCard({ src, caption, orientation = 'landscape', ratio }: MediaItem) {
-  const getAspectStyle = () => {
-    if (ratio) {
-      const [w, h] = ratio.split('/');
-      return { aspectRatio: `${w} / ${h}` };
-    }
-    return undefined;
-  };
-
-  const aspectClass = !ratio && (orientation === 'portrait' ? 'aspect-[3/4]' : 'aspect-video');
-
-  return (
-    <div className="space-y-3">
-      <div className={`relative w-full ${aspectClass} overflow-hidden rounded-xl border border-white/10`} style={getAspectStyle()}>
-        <NextImage
-          src={src}
-          alt={caption}
-          fill
-          className="object-contain p-4"
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-        />
-      </div>
-      <div className="text-sm text-primary-foreground/70">{caption}</div>
-    </div>
-  );
-}
-
-// ----------------------------------
-// ARC DATA
-// ----------------------------------
-const HERO_STATS = [
-  { label: 'Target Apogee', value: '820 ft (ARC 2024 ruleset)' },
-  { label: 'Flight Time Window', value: '43–46 seconds' },
-  { label: 'Flight Mass', value: '605 g with egg payload' },
+const stats = [
+  { label: 'National placement', value: '24th' },
+  { label: 'Qualifying score', value: '9 points' },
+  { label: 'My role', value: 'Co-Captain' },
 ];
-
-const MISSION_SPECS = [
-  { label: 'Target Apogee', value: '820 ft' },
-  { label: 'Acceptable Flight Time Window', value: '43–46 seconds' },
-  { label: 'Maximum Allowed Mass', value: '650 g' },
-  { label: 'Actual Flight Mass', value: '605 g (with egg payload)' },
-  { label: 'Payload', value: 'One raw egg (uncracked)' },
-  { label: 'Motor', value: 'AeroTech F32-6T' },
-  { label: 'Altimeter', value: 'Jolly Logic AltimeterTwo' },
-  { label: 'Recovery', value: '24″ parachute, Kevlar shock cord (single deploy)' },
-  { label: 'Airframe Diameter', value: 'BT-80' },
-  { label: 'Overall Length', value: '60 in' },
-];
-
-const DESIGN_MEDIA: MediaItem[] = [
-  {
-    src: '/images/arc/Assembled-Rocket-470x80.png',
-    ratio: '470/80',
-    caption: 'Assembled BT-80 competition rocket with egg payload and recovery system.',
-  },
-  {
-    src: '/images/arc/NoseCone-230x300.png',
-    orientation: 'portrait',
-    caption: '3D-printed nylon–carbon fiber nose cone with adjustable ballast.',
-  },
-  {
-    src: '/images/arc/Engine-Bay-With-Motor.png',
-    caption: 'Tail cone, Delrin fin interfaces, and AeroTech F32-6T motor installed.',
-  },
-];
-
-const MEDIA: MediaItem[] = [
-  {
-    src: '/images/arc/Flight-Logs-650x180.png',
-    ratio: '650/180',
-    caption: 'ARC flight logs showing altitude, weather, and flight-time results.',
-  },
-  {
-    src: '/images/arc/Rocket-Configurations-Spreadsheet-330x230.png',
-    caption: 'Rocket configuration matrix with mass, ballast, and timing data.',
-  },
-  {
-    src: '/images/arc/Rocket-Configs-Spreadsheet2-330x230.png',
-    caption: 'Alternate configuration set with stability and mass property values.',
-  },
-  {
-    src: '/images/arc/Capitol-Hill-Rocket-Team-Picture-350x260.png',
-    caption: 'National Finalist team photo during Capitol Hill recognition.',
-    ratio: '350/260',
-  },
-];
-
-// ----------------------------------
-// PAGE COMPONENT
-// ----------------------------------
 
 export default function ArcProjectPage() {
   return (
-    <div className="min-h-screen bg-primary text-primary-foreground">
-      {/* HERO HEADER */}
+    <main className="min-h-screen bg-primary text-primary-foreground">
       <AnimatedHero
-        image="/images/arc-hero.svg"
-        badge="American Rocketry Challenge · National Finalist"
-        title="American Rocketry Challenge — National Finalist Co-Captain"
-        subtitle="Mid-power competition rocket engineered for an 820 ft apogee, 43–46 second flight time window, and 605 g mass limit while carrying a fragile egg payload."
+        image="/images/arc/Capitol-Hill-Rocket-Team-Picture-350x260.png"
+        badge="American Rocketry Challenge · 2024"
+        title="Engineering repeatability into a precision flight mission"
+        subtitle="A 605 g competition rocket optimized for an 820 ft apogee, a 43 - 46 second flight, and the safe recovery of a raw egg payload."
       />
+      <ProjectStats items={stats} />
 
-      <div className="mx-auto max-w-6xl space-y-16 px-6 py-16">
-        {/* HERO STATS */}
-        <AnimatedSection>
-          <div className="grid gap-6 md:grid-cols-3">
-            {HERO_STATS.map((stat) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.45 }}
-              >
-                <StatCard label={stat.label} value={stat.value} />
-              </motion.div>
-            ))}
+      <Section id="overview" title="Small score differences came from system-level discipline" kicker="Case study">
+        <ProjectBrief
+          items={[
+            {
+              label: 'My role',
+              title: 'Co-Captain',
+              detail: 'I led vehicle design, OpenRocket simulation, custom-component CAD, test planning, and field decisions through the qualifying campaign.',
+            },
+            {
+              label: 'Mission challenge',
+              title: 'Hit altitude and time simultaneously',
+              detail: 'Mass, stability, drag, motor performance, parachute descent, wind, and egg protection all influenced the same composite score.',
+            },
+            {
+              label: 'Outcome',
+              title: '24th nationally',
+              detail: 'A qualifying score of 9 advanced the team to the national finals and created the performance record that led into NASA Student Launch.',
+            },
+          ]}
+        />
+        <div className="grid gap-10 pt-4 lg:grid-cols-[1.25fr,0.75fr]">
+          <div className="space-y-5">
+            <p>
+              ARC rewards precision rather than maximum performance. The rocket had to carry and recover an uncracked egg while approaching a fixed altitude and remaining aloft inside a narrow timing window.
+            </p>
+            <p>
+              That scoring model made every subsystem adjustable. We treated ballast, drag, parachute behavior, and motor choice as controllable variables and recorded each flight closely enough to make the next change intentional.
+            </p>
           </div>
-        </AnimatedSection>
+          <PullQuote>The objective was not to build the highest-flying rocket; it was to build a vehicle we could tune predictably.</PullQuote>
+        </div>
+      </Section>
 
-        {/* EXECUTIVE SUMMARY */}
-        <Section id="overview" title="Executive Summary" kicker="American Rocketry Challenge">
-          <AnimatedSection className="space-y-6">
+      <Section id="constraints" title="The rules became an engineering specification" kicker="Mission definition">
+        <TechnicalList
+          items={[
+            { label: 'Target apogee', value: '820 ft under the 2024 ruleset.' },
+            { label: 'Flight duration', value: '43 - 46 seconds from launch to landing.' },
+            { label: 'Mass', value: '605 g flight-ready with egg payload, below the 650 g maximum.' },
+            { label: 'Propulsion', value: 'AeroTech F32-6T motor.' },
+            { label: 'Recovery', value: '24 in parachute and Kevlar shock cord in a single-deployment architecture.' },
+            { label: 'Vehicle', value: '60 in long BT-80 airframe with a Jolly Logic AltimeterTwo.' },
+          ]}
+        />
+        <FigureCard
+          src="/images/arc/Assembled-Rocket-470x80.png"
+          caption="The complete 60-inch competition vehicle with its recovery and egg-payload sections."
+          wide
+        />
+      </Section>
+
+      <Section id="design" title="Adjustability made the vehicle useful across changing conditions" kicker="Design decisions">
+        <DecisionGrid
+          items={[
+            {
+              label: 'Mass properties',
+              title: 'Tune ballast without rebuilding',
+              detail: 'A custom Fusion 360 nose cone used adjustable infill and ballast volume to move the center of gravity and control apogee between tests.',
+            },
+            {
+              label: 'Aft geometry',
+              title: 'Integrate motor and fin interfaces',
+              detail: 'The reinforced tail cone located the AeroTech motor and Delrin fin interfaces while keeping the aft section serviceable after field damage.',
+            },
+            {
+              label: 'Recovery',
+              title: 'Treat descent time as a design variable',
+              detail: 'Parachute sizing, packing, and shock-cord configuration were iterated to protect the egg while keeping total time inside the scoring window.',
+            },
+          ]}
+        />
+        <div className="grid gap-6 md:grid-cols-2">
+          <FigureCard src="/images/arc/NoseCone-230x300.png" caption="Custom printed nose cone used to tune forward mass." portrait />
+          <FigureCard src="/images/arc/Engine-Bay-With-Motor.png" caption="Motor bay, tail cone, and fin interfaces in the flight configuration." />
+        </div>
+      </Section>
+
+      <Section id="testing" title="Approximately fifteen flights turned variation into data" kicker="Iteration">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr,1.15fr] lg:items-start">
+          <div className="space-y-5">
             <p>
-              As Co-Captain of the 2024 ARC team, I led design, simulation, and field operations for a mid-power rocket engineered to hit a
-              precise 820-foot apogee and 43–46 second total flight time while carrying a fragile egg payload. Our final mass of 605 grams
-              provided a tight margin for structural strength and recovery hardware.
+              OpenRocket established the initial stability and altitude model, but real flights exposed motor variation, wind drift, recovery packing effects, and rebuild differences. We logged configuration, ballast, weather, altitude, and time so those effects could be separated.
             </p>
             <p>
-              Using OpenRocket for simulation and Fusion 360 for CAD, we developed a BT-80 vehicle with a nylon–carbon fiber nose cone,
-              reinforced tail cone, and Delrin fin interfaces. Our qualifying score of 9 was among the lowest nationwide, placing us 24th out
-              of ~1,000 teams and making us the only team from Georgia to reach the national finals.
+              A small launch field and repeated tree recoveries also made durability part of performance. Each repair was followed by a mass-property and alignment check before the next flight.
             </p>
-          </AnimatedSection>
-        </Section>
+          </div>
+          <FigureCard
+            src="/images/arc/Flight-Logs-650x180.png"
+            caption="Flight log used to compare altitude, time, weather, and configuration changes."
+            wide
+          />
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          <FigureCard src="/images/arc/Rocket-Configurations-Spreadsheet-330x230.png" caption="Configuration matrix for mass, ballast, and predicted behavior." />
+          <FigureCard src="/images/arc/Rocket-Configs-Spreadsheet2-330x230.png" caption="Additional test configurations and stability values." />
+        </div>
+      </Section>
 
-        {/* MISSION SPECS */}
-        <Section id="specs" title="Mission Specifications & Constraints" kicker="ARC 2024 Ruleset">
-          <AnimatedSection>
-            <p className="mb-8">
-              ARC's strict scoring window forces careful balancing of altitude, mass, drag, and descent rate. Each constraint directly shapes
-              the aerodynamic and structural design of the vehicle.
+      <Section id="result" title="The qualifying campaign established a national result" kicker="Outcome">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr,0.8fr]">
+          <div className="space-y-5">
+            <p>
+              The final qualifying score of <strong className="text-white">9</strong> placed the team <strong className="text-white">24th in the nation</strong>. The result validated a simulation-led, test-heavy process and advanced us to the national finals.
             </p>
+            <p>
+              ARC also established the team’s foundation for NASA Student Launch: documented testing, custom fabrication, disciplined field operations, and confidence working across an integrated launch vehicle.
+            </p>
+          </div>
+          <FigureCard
+            src="/images/arc/Capitol-Hill-Rocket-Team-Picture-350x260.png"
+            caption="The national-finalist team during Capitol Hill recognition."
+            fit="cover"
+          />
+        </div>
+      </Section>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {MISSION_SPECS.map((spec) => (
-                <div key={spec.label} className="rounded-2xl border border-white/5 bg-white/5 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accentneongreen/70">
-                    {spec.label}
-                  </p>
-                  <p className="mt-2">{spec.value}</p>
-                </div>
-              ))}
+      <Section id="airbrake" title="Current development: reducing the final altitude uncertainty" kicker="2026 airbrake system">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr,1.2fr] lg:items-start">
+          <div className="space-y-5">
+            <p>
+              This year, I am extending the ARC work by designing and manufacturing an active airbrake system. The objective is to reduce sensitivity to motor impulse variation, flight mass, atmospheric conditions, and small assembly differences so the vehicle can approach the target altitude with a smaller and more repeatable error.
+            </p>
+            <p>
+              The current design uses a compact servo-driven mechanism to deploy three drag panels around the airframe. Controlled deployment adds an adjustable source of aerodynamic drag during ascent, creating a way to correct a predicted overshoot instead of relying entirely on passive configuration changes made before launch.
+            </p>
+            <div className="border-l border-accentneongreen py-2 pl-5">
+              <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-primary-foreground/50">Current status</p>
+              <p className="mt-2 text-lg font-medium text-white">Mechanical design and manufacturing in progress</p>
             </div>
-          </AnimatedSection>
-        </Section>
+          </div>
+          <FigureCard
+            src="/images/arc/Airbrake-Design-ARC.png"
+            caption="Current airbrake CAD showing the central servo, synchronized linkage arms, and three deployable drag panels."
+          />
+        </div>
 
-        {/* VEHICLE ARCHITECTURE */}
-        <Section id="vehicle" title="Vehicle Architecture" kicker="Airframe, Structure & Recovery">
-          <AnimatedSection className="space-y-6">
-            <p>
-              The BT-80 rocket uses a spiral-wound kraft airframe, a nylon–carbon fiber nose cone with adjustable ballast, and a reinforced
-              tail cone integrating Delrin fins and the AeroTech motor mount. A Kevlar shock cord and 24″ parachute were tuned to satisfy the
-              43–46 second descent requirement while protecting the egg payload.
-            </p>
-
-            {/* Full-width assembled rocket */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45 }}
-              className="space-y-3"
-            >
-              <div className="relative w-full aspect-[470/80] overflow-hidden rounded-xl border border-white/10">
-                <NextImage
-                  src="/images/arc/Assembled-Rocket-470x80.png"
-                  alt="Assembled BT-80 competition rocket"
-                  fill
-                  className="object-contain p-4"
-                  sizes="100vw"
-                />
-              </div>
-              <div className="text-sm text-primary-foreground/70">Assembled BT-80 competition rocket with egg payload and recovery system.</div>
-            </motion.div>
-
-            {/* Nose cone and tail cone in 2-column grid */}
-            <div className="grid gap-6 md:grid-cols-2">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.05 }}
-              >
-                <MediaCard src="/images/arc/NoseCone-230x300.png" orientation="portrait" caption="3D-printed nylon–carbon fiber nose cone with adjustable ballast." />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.1 }}
-              >
-                <MediaCard src="/images/arc/Engine-Bay-With-Motor.png" caption="Tail cone, Delrin fin interfaces, and AeroTech F32-6T motor installed." />
-              </motion.div>
-            </div>
-          </AnimatedSection>
-        </Section>
-
-        {/* TESTING */}
-        <Section id="testing" title="Flight Testing & Performance" kicker="Simulations & Iteration">
-          <AnimatedSection className="space-y-6">
-            <p>
-              Approximately fifteen test flights were performed to tune mass distribution, drag behavior, and recovery timing. Despite a
-              small launch field and frequent wind drift into trees, each rebuild improved consistency and durability.
-            </p>
-            <p>
-              The final qualifying flight achieved a score of 9 — extremely close to the perfect altitude and timing targets — validating
-              our simulation-driven, iteration-based engineering approach.
-            </p>
-          </AnimatedSection>
-        </Section>
-
-        {/* ENGINEERING IMPACT */}
-        <Section id="impact" title="National Results & Impact" kicker="From ARC → NASA SLI">
-          <AnimatedSection className="space-y-6">
-            <p>
-              Our 24th-place national ranking and near-perfect qualifying score led directly to our selection for the NASA Student Launch
-              Initiative — the first invitation ever received by a team from Oconee County.
-            </p>
-          </AnimatedSection>
-        </Section>
-
-        {/* MEDIA */}
-        <Section id="media" title="Media & Downloads" kicker="Appendix">
-          <AnimatedSection className="space-y-6">
-            {/* Full-width flight logs */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45 }}
-              className="space-y-3"
-            >
-              <div className="relative w-full aspect-[650/180] overflow-hidden rounded-xl border border-white/10">
-                <NextImage
-                  src="/images/arc/Flight-Logs-650x180.png"
-                  alt="ARC flight logs"
-                  fill
-                  className="object-contain p-4"
-                  sizes="100vw"
-                />
-              </div>
-              <div className="text-sm text-primary-foreground/70">ARC flight logs showing altitude, weather, and flight-time results.</div>
-            </motion.div>
-
-            {/* Other media in 3-column grid */}
-            <div className="grid gap-6 md:grid-cols-3">
-              {MEDIA.slice(1).map((item, i) => (
-                <motion.div
-                  key={item.src}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.05 }}
-                >
-                  <MediaCard {...item} />
-                </motion.div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </Section>
-      </div>
-    </div>
+        <DecisionGrid
+          items={[
+            {
+              label: 'Control objective',
+              title: 'Drive altitude error toward zero',
+              detail: 'The airbrake is intended to trim excess predicted apogee while preserving a stable ascent and the rest of the competition vehicle’s flight requirements.',
+            },
+            {
+              label: 'Mechanical focus',
+              title: 'Deploy three panels repeatably',
+              detail: 'The mechanism must package inside the airframe, move each panel consistently, limit backlash, and tolerate aerodynamic loading without binding.',
+            },
+            {
+              label: 'Verification focus',
+              title: 'Connect deployment to measured drag',
+              detail: 'Ground testing and flight data will be used to characterize deployment behavior, refine the drag model, and determine how much correction the system can reliably provide.',
+            },
+          ]}
+        />
+        <ProjectActions primary={{ href: '/projects/nasa-sli', label: 'Continue to NASA SLI' }} />
+      </Section>
+    </main>
   );
 }

@@ -13,15 +13,15 @@ export type SectionProps = {
 
 export function Section({ id, title, kicker, children, className, contentClassName }: SectionProps) {
   return (
-    <section id={id} className={cn('py-16 sm:py-20 scroll-mt-24', className)}>
+    <section id={id} className={cn('scroll-mt-24 border-t border-white/10 py-16 sm:py-24', className)}>
       <div className="mx-auto max-w-6xl px-6">
         <div className="max-w-3xl">
           {kicker ? (
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accentneongreen/80">{kicker}</p>
+            <p className="eyebrow">{kicker}</p>
           ) : null}
-          <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">{title}</h2>
+          <h2 className="mt-4 text-3xl font-medium tracking-[-0.035em] text-white sm:text-5xl">{title}</h2>
         </div>
-        <div className={cn('mt-10 space-y-6 text-base leading-relaxed text-primary-foreground/80', contentClassName)}>
+        <div className={cn('mt-10 space-y-6 text-base leading-7 text-primary-foreground/75', contentClassName)}>
           {children}
         </div>
       </div>

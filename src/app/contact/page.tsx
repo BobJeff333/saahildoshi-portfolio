@@ -1,173 +1,78 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Check, Copy, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUpRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 
-const cardContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
+const CONTACTS = [
+  {
+    label: 'Email',
+    value: 'saahil.doshi@outlook.com',
+    detail: 'Best for research, academic, and engineering conversations.',
+    href: 'mailto:saahil.doshi@outlook.com',
+    action: 'Write an email',
+    icon: Mail,
   },
-};
-
-const cardItem = {
-  hidden: { opacity: 0, y: 14 },
-  show: { opacity: 1, y: 0 },
-};
+  {
+    label: 'LinkedIn',
+    value: 'Saahil Doshi',
+    detail: 'Professional milestones, project updates, and networking.',
+    href: 'https://www.linkedin.com/in/saahil-doshi-a2564a332/',
+    action: 'Open LinkedIn',
+    icon: Linkedin,
+  },
+  {
+    label: 'GitHub',
+    value: 'saahildoshi',
+    detail: 'Software projects, technical utilities, and portfolio source.',
+    href: 'https://github.com/saahildoshi',
+    action: 'Open GitHub',
+    icon: Github,
+  },
+];
 
 export default function ContactPage() {
-  const [copied, setCopied] = useState(false);
-  const email = 'saahil.doshi@outlook.com';
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      setCopied(false);
-    }
-  };
-
   return (
-    <div className="bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-6xl px-6 py-20 space-y-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="space-y-4"
-        >
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accentneongreen/80">Contact</p>
-          <h1 className="text-4xl font-semibold text-white sm:text-5xl">Let&apos;s Connect</h1>
-          <p className="max-w-3xl text-lg text-primary-foreground/80">
-            Whether it&apos;s research, engineering, collaboration, or opportunities—I&apos;m always happy to talk.
-          </p>
-        </motion.div>
-
-        <motion.div
-          variants={cardContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-          className="grid gap-6 md:grid-cols-3"
-        >
-          <motion.div
-            variants={cardItem}
-            className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-accentneongreen/60"
-          >
-            <div className="flex items-center gap-3">
-              <div className="rounded-full border border-accentneongreen/40 bg-accentneongreen/10 p-3 text-accentneongreen">
-                <Mail className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-sm uppercase tracking-[0.28em] text-accentneongreen/80">Email</p>
-                <p className="mt-1 text-white">saahil.doshi@outlook.com</p>
-              </div>
-            </div>
-            <p className="mt-4 text-primary-foreground/70">Direct email is the fastest way to reach me.</p>
-            <Button
-              onClick={handleCopy}
-              variant="outline"
-              className="mt-5 w-full justify-center border-accentneongreen/50 text-accentneongreen hover:bg-accentneongreen/10"
-            >
-              {copied ? (
-                <span className="inline-flex items-center gap-2">
-                  <Check className="h-4 w-4" /> Copied
-                </span>
-              ) : (
-                <span className="inline-flex items-center gap-2">
-                  <Copy className="h-4 w-4" /> Copy email
-                </span>
-              )}
-            </Button>
-          </motion.div>
-
-          <motion.div
-            variants={cardItem}
-            className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-accentneongreen/60"
-          >
-            <div className="flex items-center gap-3">
-              <div className="rounded-full border border-accentneongreen/40 bg-accentneongreen/10 p-3 text-accentneongreen">
-                <Linkedin className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-sm uppercase tracking-[0.28em] text-accentneongreen/80">LinkedIn</p>
-                <p className="mt-1 text-white">Stay connected on LinkedIn</p>
-              </div>
-            </div>
-            <p className="mt-4 text-primary-foreground/70">Follow project updates and professional milestones.</p>
-            <Button
-              asChild
-              variant="outline"
-              className="mt-5 w-full justify-center border-accentneongreen/50 text-accentneongreen hover:bg-accentneongreen/10"
-            >
-              <Link href="https://www.linkedin.com/in/saahil-doshi-a2564a332/i" target="_blank" rel="noreferrer">
-                Open LinkedIn
-              </Link>
-            </Button>
-          </motion.div>
-
-          <motion.div
-            variants={cardItem}
-            className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-accentneongreen/60"
-          >
-            <div className="flex items-center gap-3">
-              <div className="rounded-full border border-accentneongreen/40 bg-accentneongreen/10 p-3 text-accentneongreen">
-                <Github className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-sm uppercase tracking-[0.28em] text-accentneongreen/80">GitHub</p>
-                <p className="mt-1 text-white">Explore my repositories</p>
-              </div>
-            </div>
-            <p className="mt-4 text-primary-foreground/70">
-              See how I build interfaces, data tools, and aerospace utilities.
-            </p>
-            <Button
-              asChild
-              variant="outline"
-              className="mt-5 w-full justify-center border-accentneongreen/50 text-accentneongreen hover:bg-accentneongreen/10"
-            >
-              <Link href="https://github.com/saahildoshi/saahildoshi-portfolio" target="_blank" rel="noreferrer">
-                View GitHub
-              </Link>
-            </Button>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="border-t border-white/5 bg-gradient-to-r from-white/5 via-white/0 to-white/5 py-14"
-      >
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 text-center sm:flex-row sm:justify-between sm:text-left">
-          <div className="space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-accentneongreen/80">Collaboration</p>
-            <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-              Interested in research, engineering projects, or collaboration? I&apos;d love to hear from you.
-            </h2>
-          </div>
-          <Button
-            asChild
-            className="rounded-full bg-accentneongreen px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-primary hover:bg-accentneongreen/90"
-          >
-            <a href="mailto:saahil.doshi@outlook.com">Email Me</a>
-          </Button>
+    <div>
+      <header className="border-b border-white/10 py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="eyebrow">Contact</p>
+          <h1 className="mt-6 max-w-4xl text-5xl font-medium leading-[0.98] tracking-[-0.055em] text-white sm:text-7xl">Let&apos;s discuss research, engineering, or what comes next.</h1>
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-primary-foreground/65">I welcome conversations with university programs, research mentors, engineering teams, and others interested in the work documented here.</p>
         </div>
-      </motion.div>
+      </header>
+
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid gap-px bg-white/10 lg:grid-cols-3">
+            {CONTACTS.map((contact) => {
+              const Icon = contact.icon;
+              return (
+                <a key={contact.label} href={contact.href} target={contact.href.startsWith('http') ? '_blank' : undefined} rel={contact.href.startsWith('http') ? 'noreferrer' : undefined} className="group flex min-h-72 flex-col bg-primary p-7 sm:p-8">
+                  <div className="flex items-center justify-between"><Icon className="h-5 w-5 text-accentneongreen" /><ArrowUpRight className="h-4 w-4 text-primary-foreground/35 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accentneongreen" /></div>
+                  <p className="mt-10 font-mono text-[0.68rem] uppercase tracking-[0.15em] text-primary-foreground/45">{contact.label}</p>
+                  <h2 className="mt-3 text-xl font-medium text-white">{contact.value}</h2>
+                  <p className="mt-4 flex-1 text-sm leading-6 text-primary-foreground/60">{contact.detail}</p>
+                  <span className="mt-8 text-sm text-accentneongreen">{contact.action}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 bg-[#151a1c] py-16 sm:py-24">
+        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-8 px-6 lg:flex-row lg:items-end">
+          <div className="max-w-3xl">
+            <p className="eyebrow">Supporting material</p>
+            <h2 className="mt-5 text-4xl font-medium tracking-[-0.045em] text-white sm:text-5xl">Start with the project record or résumé.</h2>
+            <p className="mt-5 text-lg leading-8 text-primary-foreground/65">Technical reports and drawings remain linked within individual case studies.</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button asChild><Link href="/projects">Project index</Link></Button>
+            <Button asChild variant="outline"><a href="/Saahil-Doshi-Resume.pdf" className="gap-2">Download résumé <Download className="h-4 w-4" /></a></Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
